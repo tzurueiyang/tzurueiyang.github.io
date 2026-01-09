@@ -1,12 +1,24 @@
 ---
-layout: home
-title: 歡迎來到我的新家
+layout: default
 ---
 
-# 您好，我是 楊子睿 博士 (Tzu-Ruei Yang, PhD)
+<header class="header-section">
+  <div style="text-align: center;">
+    <h1 style="font-size: 3rem;">Tzu-Ruei Yang, PhD</h1>
+    <p style="font-size: 1.5rem;">古生物學家 | 探索生命的一億年痕跡</p>
+  </div>
+</header>
 
-這裡將會記錄我的研究與生活。
+<main style="max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.8;">
 
-### 目前研究重點：
-* 白堊紀恐龍的繁殖生物學
-* 古生物生態學
+## 關於我
+目前任職於國立自然科學博物館，致力於研究白堊紀生物的繁殖與演化。
+
+> "我一直在尋找，那段塵封在石頭裡一億年的生命密碼。"
+
+### 研究領域
+* 恐龍繁殖生物學
+* 古病理學
+* 化石清修技術
+
+</main>
