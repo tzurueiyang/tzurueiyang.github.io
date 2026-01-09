@@ -90,3 +90,20 @@ body {
   background: #8c7b6c;
   border-radius: 50%;
 }
+/* PUBLICATIONS 頁面專屬樣式 */
+.pub-list strong {
+  color: #222;
+  font-weight: 700;
+  text-decoration: underline; /* 讓楊博士的名字稍微醒目一點 */
+}
+
+.pub-list em {
+  color: #555;
+  font-family: serif;
+}
+
+/* 讓 DOI 或 PDF 按鈕有小圖示感 */
+.pub-list a:hover {
+  text-decoration: underline;
+  color: #8c7b6c;
+}
