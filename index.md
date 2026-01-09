@@ -1,12 +1,4 @@
 ---
-<nav style="text-align: center; padding: 20px 0; border-bottom: 1px solid #ddd; margin-bottom: 30px;">
-  <a href="/" style="margin: 0 15px; text-decoration: none; color: #5d534a; font-weight: bold;">HOME</a> |
-  <a href="/about/" style="margin: 0 15px; text-decoration: none; color: #5d534a; font-weight: bold;">ABOUT ME</a> |
-  <a href="/publications/" style="margin: 0 15px; text-decoration: none; color: #5d534a; font-weight: bold;">PUBLICATIONS</a> |
-  <a href="/research/" style="margin: 0 15px; text-decoration: none; color: #5d534a; font-weight: bold;">RESEARCH</a> |
-  <a href="/media/" style="margin: 0 15px; text-decoration: none; color: #5d534a; font-weight: bold;">MEDIA</a> |
-  <a href="/contact/" style="margin: 0 15px; text-decoration: none; color: #5d534a; font-weight: bold;">CONTACT</a>
-</nav>
 layout: default
 ---
 
@@ -14,6 +6,15 @@ layout: default
   <div style="text-align: center;">
     <h1 style="font-size: 3rem;">Tzu-Ruei Yang, PhD</h1>
     <p style="font-size: 1.5rem;">古生物學家 | 探索生命的一億年痕跡</p>
+    
+    <nav style="margin-top: 30px; font-family: serif;">
+      <a href="/" style="color: white; margin: 0 15px; text-decoration: none; border-bottom: 1px solid white;">HOME</a>
+      <a href="/about/" style="color: rgba(255,255,255,0.8); margin: 0 15px; text-decoration: none;">ABOUT ME</a>
+      <a href="/publications/" style="color: rgba(255,255,255,0.8); margin: 0 15px; text-decoration: none;">PUBLICATIONS</a>
+      <a href="/research/" style="color: rgba(255,255,255,0.8); margin: 0 15px; text-decoration: none;">RESEARCH</a>
+      <a href="/media/" style="color: rgba(255,255,255,0.8); margin: 0 15px; text-decoration: none;">MEDIA</a>
+      <a href="/contact/" style="color: rgba(255,255,255,0.8); margin: 0 15px; text-decoration: none;">CONTACT</a>
+    </nav>
   </div>
 </header>
 
