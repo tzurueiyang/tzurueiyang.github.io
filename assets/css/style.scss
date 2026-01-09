@@ -1,0 +1,19 @@
+---
+---
+@import "{{ site.theme }}";
+
+.header-section {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/hero.jpg') no-repeat center center;
+  background-size: cover;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+body {
+  background-color: #f4f1ea; /* 復古羊皮紙底色 */
+  font-family: "Noto Serif TC", serif;
+}
