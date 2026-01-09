@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-
 <header class="header-section">
   <div style="text-align: center;">
     <h1 style="font-size: 3rem;">Tzu-Ruei Yang, PhD</h1>
