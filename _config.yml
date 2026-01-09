@@ -1,3 +1,4 @@
 title: Tzu-Ruei Yang, PhD
 description: 古生物學家的研究日誌
-theme: jekyll-theme-architect
+theme: jekyll-theme-cayman # 建議先用 cayman 作為基底，它最適合自定義
+remote_theme: pages-themes/cayman@v0.2.0
