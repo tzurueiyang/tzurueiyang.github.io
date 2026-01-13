@@ -3,26 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Tzu-Ruei Yang | 網頁標題</title>
+    <title>Publications & Editorial | Dr. Tzu-Ruei Yang</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
+<body class="paper-white-bg">
 
     <nav class="main-nav">
         <ul>
             <li><a href="./index.html">PROFILE</a></li>
             <li><a href="./research.html">RESEARCH & FIELDWORK</a></li>
-            <li><a href="./publications.html">PUBLICATIONS & EDITORIAL</a></li>
+            <li><a href="./publications.html" class="active">PUBLICATIONS & EDITORIAL</a></li>
             <li><a href="./outreach.html">OUTREACH & CURATION</a></li>
             <li><a href="./connect.html">CONNECT</a></li>
         </ul>
     </nav>
 
-    <main class="content-container">
-        <h2 class="section-title">頁面建置中...</h2>
-        <p style="text-align:center;">此頁面內容即將上線，請稍候。</p>
+    <main class="content-container" style="max-width: 1000px;">
+        
+        <section class="pub-section">
+            <h2 class="section-title">A. Selected Highlights</h2>
+            <div class="highlight-grid">
+                <div class="highlight-item">
+                    <span class="journal-tag">SCIENCE BULLETIN (IF: 18.9)</span>
+                    <strong>Yang, T.-R.*</strong>, et al. (2019) "Palaeobiological implications of calcium isotope compositions in dinosaur eggshells."
+                </div>
+                <div class="highlight-item">
+                    <span class="journal-tag">BIOLOGY LETTERS (Royal Society)</span>
+                    <strong>Yang, T.-R.*</strong>, et al. (2018) "Aragonite-to-calcite transformation in fossil dinosaur eggshells."
+                </div>
+                <div class="highlight-item">
+                    <span class="journal-tag">JOURNAL OF VERTEBRATE PALEONTOLOGY</span>
+                    <strong>Yang, T.-R.*</strong>, et al. (2023) "A new giant baleen whale from the Pleistocene of Taiwan."
+                </div>
+                <div class="highlight-item">
+                    <span class="journal-tag">PALEOBIOLOGY</span>
+                    <strong>Yang, T.-R.*</strong>, et al. (2020) "The first fossil record of dinosaur eggshells from Taiwan."
+                </div>
+                <div class="highlight-item">
+                    <span class="journal-tag">CRETACEOUS RESEARCH</span>
+                    <strong>Yang, T.-R.*</strong>, et al. (2015) "New oviraptorid dinosaur (Dinosauria: Theropoda) from the Late Cretaceous."
+                </div>
+            </div>
+        </section>
+
+        <section class="pub-section">
+            <h2 class="section-title">B. Academic Services</h2>
+            <div class="service-box">
+                <div class="service-list">
+                    <div>
+                        <h4 style="color:var(--accent-copper);">Editorial Board</h4>
+                        <ul style="font-size:0.9rem;">
+                            <li>Frontiers in Earth Science (Review Editor)</li>
+                            <li>National Museum of Natural Science (Bulletin Editor)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--accent-copper);">Peer Reviewer</h4>
+                        <p style="font-size:0.85rem; line-height:1.6;">Nature, Historical Biology, Cretaceous Research, Paleobiology, JVP, Vertebrata PalAsiatica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pub-section">
+            <h2 class="section-title">C. Full Publication List</h2>
+            
+            <div class="pub-category">
+                <h3>Peer-reviewed Journals</h3>
+                <ul class="pub-list">
+                    <li>Yang, T.-R. (2024) Title of the most recent paper...</li>
+                    <li>Yang, T.-R. (2023) Another significant research paper...</li>
+                    <li>Yang, T.-R. (2023) Discovery of ancient marine mammals...</li>
+                </ul>
+                
+                <div id="drawer-journals" class="drawer-content">
+                    <ul class="pub-list">
+                        <li>Yang, T.-R. (2022) Older research article 1...</li>
+                        <li>Yang, T.-R. (2021) Older research article 2...</li>
+                        <li>(以此類推，可放至 100+ 篇)</li>
+                    </ul>
+                </div>
+                <button class="drawer-btn" onclick="toggleDrawer('drawer-journals')">View Full List (+)</button>
+            </div>
+
+            <div class="pub-category">
+                <h3>Conference Presentations</h3>
+                <ul class="pub-list">
+                    <li>2024 SVP Annual Meeting, Minneapolis, USA.</li>
+                    <li>2023 10th International Dinosaur Symposium.</li>
+                    <li>2022 Geological Society of Taiwan.</li>
+                </ul>
+                <div id="drawer-conf" class="drawer-content">
+                    <ul class="pub-list">
+                        <li>2021 Previous conference...</li>
+                        <li>2019 EGU General Assembly, Vienna.</li>
+                    </ul>
+                </div>
+                <button class="drawer-btn" onclick="toggleDrawer('drawer-conf')">View Full List (+)</button>
+            </div>
+        </section>
+
+        <section class="pub-section">
+            <h2 class="section-title">D. Impact Metrics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>Google Scholar</h4>
+                    <p>Coming Soon</p>
+                    <a href="#">View Profile</a>
+                </div>
+                <div class="stat-card">
+                    <h4>ResearchGate</h4>
+                    <p>Coming Soon</p>
+                    <a href="#">View Profile</a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>© 2024 DR. TZU-RUEI YANG. ALL RIGHTS RESERVED.</footer>
+
+    <script>
+        function toggleDrawer(id) {
+            const content = document.getElementById(id);
+            const btn = content.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.innerText = "View Full List (+)";
+            } else {
+                content.style.display = "block";
+                btn.innerText = "Close List (-)";
+            }
+        }
+    </script>
 </body>
 </html>
