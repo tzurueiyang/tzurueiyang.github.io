@@ -1,1 +1,92 @@
-body { font-family: sans-serif; }
+/* 色彩變數定義 */
+:root {
+    --earth-grey: #2C2C2C;   /* 深地層灰 */
+    --earth-orange: #D35400; /* 大地橘 */
+    --sand-beige: #F4F1EA;   /* 淺沙色背景 */
+    --text-dark: #333333;
+}
+
+body {
+    background-color: var(--sand-beige);
+    color: var(--text-dark);
+    font-family: 'Noto Serif TC', serif; /* 中英皆採宋體/Serif */
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* 導覽列樣式 */
+.main-nav {
+    background: var(--earth-grey);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    color: var(--earth-orange);
+}
+
+/* Hero 區塊 */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 10%;
+    background: white;
+    gap: 50px;
+}
+
+.hero-image img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* 圓形照片 */
+    object-fit: cover;
+    border: 5px solid var(--earth-orange);
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--earth-grey);
+}
+
+.en-name { font-size: 1.5rem; font-weight: normal; }
+.tagline { color: var(--earth-orange); font-size: 1.2rem; font-weight: bold; }
+
+/* 內容區塊 */
+.content-container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
+.section-title { border-bottom: 2px solid var(--earth-orange); display: inline-block; margin-bottom: 20px; }
+
+/* 勳章卡片 */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.medal-card {
+    background: var(--earth-grey);
+    color: white;
+    padding: 20px;
+    border-left: 5px solid var(--earth-orange);
+}
+
+.medal-card h3 { color: var(--earth-orange); margin-top: 0; }
