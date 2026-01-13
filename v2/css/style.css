@@ -165,3 +165,100 @@ body {
 }
 
 footer { text-align: center; padding: 40px; font-size: 0.65rem; color: #CCC; }
+/* --- P2 RESEARCH & FIELDWORK 專屬樣式 --- */
+
+/* A. 互動地圖區 */
+.map-canvas {
+    width: 100%;
+    height: 450px;
+    background: #fdfdfd;
+    border: 1px solid var(--border-light);
+    position: relative;
+    margin: 40px 0;
+    /* 增加地層細線感底圖 */
+    background-image: 
+        linear-gradient(rgba(211, 84, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(211, 84, 0, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.map-pin {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: var(--accent-copper);
+    border: 3px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(211, 84, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.map-pin:hover {
+    transform: scale(1.5);
+    background: #000;
+}
+
+/* B. 四大主題卡片排版 */
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 佈局 */
+    gap: 25px;
+    margin: 50px 0;
+}
+
+.theme-card {
+    border: 1px solid var(--border-light);
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.theme-img {
+    width: 100%;
+    height: 200px;
+    background: #eee; /* 待照片置入 */
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.theme-content {
+    padding: 20px;
+}
+
+.theme-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    color: var(--accent-copper);
+}
+
+/* C. 重大發現時間軸 */
+.timeline-container {
+    border-left: 2px solid var(--border-light);
+    margin: 40px 0 40px 20px;
+    padding-left: 30px;
+}
+
+.discovery-node {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.discovery-node::before {
+    content: '';
+    position: absolute;
+    left: -41px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 2px solid var(--accent-copper);
+    border-radius: 50%;
+}
+
+/* 手機適配 */
+@media (max-width: 768px) {
+    .theme-grid { grid-template-columns: 1fr; }
+    .map-canvas { height: 300px; }
+}
