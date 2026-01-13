@@ -13,22 +13,28 @@ body {
     font-family: 'Noto Serif TC', serif;
     margin: 0;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* 導覽列：極簡窄版 */
+/* 導覽列：手機端支援橫向捲動免於擠壓 */
 .main-nav {
     padding: 0.8rem 0;
     border-bottom: 1px solid var(--border-light);
     background: rgba(255,255,255,0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .main-nav ul {
     display: flex;
     justify-content: center;
-    gap: 35px;
+    gap: 20px;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 15px;
+    overflow-x: auto; /* 手機端可橫滑 */
+    white-space: nowrap;
 }
 
 .main-nav a {
@@ -42,56 +48,52 @@ body {
 
 .main-nav a.active { color: var(--accent-copper); }
 
-/* Hero 與 Content 整合：大型橫向布局 */
+/* 主容器排版 */
 .profile-wrapper {
     display: flex;
-    align-items: stretch; /* 讓左右兩側高度一致 */
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 20px;
-    gap: 50px;
+    flex-direction: row; /* 桌機預設左右 */
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 25px;
+    gap: 40px;
 }
 
-/* 1. 照片區：提升為 3~4 倍視覺面積 */
+/* 照片區優化 */
 .photo-box {
-    flex: 0 0 450px; /* 固定巨大寬度 */
+    flex: 0 0 420px; /* 桌機照片寬度 */
     position: relative;
-    overflow: hidden;
 }
 
 .photo-box img {
     width: 100%;
-    height: 550px; /* 增加高度讓氣勢更強 */
+    height: auto;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
-    border-radius: 4px; /* 改為方中帶圓的現代感 */
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-radius: 4px;
+    transition: all 0.5s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* 照片動態：滑鼠移入時的呼吸放大感 */
 .photo-box:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 30px 60px rgba(211, 84, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(211, 84, 0, 0.15);
 }
 
-/* 2. 文字資訊區：緊湊排版 */
+/* 文字資訊區 */
 .info-box {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* 垂直置中 */
 }
 
 .name-block h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem); /* 字體大小隨螢幕自動縮放 */
     margin: 0;
     color: #000;
-    line-height: 1.2;
 }
 
 .name-block .en-name {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #AAA;
     display: block;
     margin-bottom: 5px;
@@ -100,8 +102,8 @@ body {
 .tagline {
     color: var(--accent-copper);
     font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 4px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
     margin: 15px 0;
     border-bottom: 1px solid var(--border-light);
     padding-bottom: 15px;
@@ -110,12 +112,10 @@ body {
 .bio-text {
     font-size: 0.95rem;
     color: #444;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
-.bio-text p { margin: 0 0 10px 0; }
-
-/* 3. 重點勳章：改為緊湊的小卡片 */
+/* 勳章區排版 */
 .impact-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -125,7 +125,7 @@ body {
 .impact-card {
     background: #FAFAFA;
     padding: 15px;
-    border-left: 2px solid var(--accent-copper);
+    border-top: 2px solid var(--accent-copper);
 }
 
 .impact-card h3 {
@@ -138,13 +138,60 @@ body {
     font-size: 0.75rem;
     color: #888;
     margin: 0;
-    line-height: 1.4;
+}
+
+/* --- RWD 行動裝置調整 --- */
+
+/* 平板尺寸 (992px 以下) */
+@media (max-width: 992px) {
+    .photo-box {
+        flex: 0 0 320px; /* 縮小照片寬度 */
+    }
+    .profile-wrapper {
+        gap: 30px;
+    }
+}
+
+/* 手機尺寸 (768px 以下) */
+@media (max-width: 768px) {
+    .profile-wrapper {
+        flex-direction: column; /* 改為垂直排列 */
+        align-items: center;
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    .photo-box {
+        flex: 0 0 auto;
+        width: 80%; /* 手機端照片佔寬 80% */
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+
+    .photo-box img {
+        aspect-ratio: 1 / 1; /* 手機端改為正方形較省空間 */
+        border-radius: 50%; /* 也可以考慮手機改圓形，更俐落 */
+    }
+
+    .impact-row {
+        grid-template-columns: 1fr; /* 勳章在手機改為垂直堆疊 */
+        gap: 10px;
+    }
+
+    .impact-card {
+        border-top: none;
+        border-left: 3px solid var(--accent-copper);
+        text-align: left;
+    }
+
+    .tagline {
+        letter-spacing: 1.5px;
+    }
 }
 
 footer {
     text-align: center;
-    padding: 30px;
-    font-size: 0.65rem;
+    padding: 40px 20px;
+    font-size: 0.6rem;
     color: #CCC;
-    border-top: 1px solid var(--border-light);
 }
