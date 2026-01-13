@@ -1,156 +1,169 @@
-/* 導入字體：思源宋體與英式古典 Serif */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+/* 導入字體：保持宋體的優雅，但增加細體 (300) 的比例 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
 
 :root {
-    --bg-deep: #121212;       /* 極深炭灰 - 模擬深層地核 */
-    --accent-oxide: #B33F26;  /* 氧化鐵橘 - 模擬化石與熱情 */
-    --text-silver: #E0E0E0;   /* 銀灰色文字 - 易讀且高級 */
-    --line-gold: #8D6E63;     /* 礦石金屬色細線 */
-    --glass: rgba(255, 255, 255, 0.05);
+    --bg-light: #F9F8F5;      /* 暖調淺砂色 - 輕盈的岩層背景 */
+    --mineral-grey: #4A4A4A;  /* 礦石深灰 - 溫柔的文字色 */
+    --accent-copper: #D35400; /* 氧化銅橘 - 保留熱情但降低飽和度 */
+    --line-soft: #E0DDD5;    /* 極淡的線條 */
 }
 
 body {
-    background-color: var(--bg-deep);
-    color: var(--text-silver);
+    background-color: var(--bg-light);
+    color: var(--mineral-grey);
     font-family: 'Noto Serif TC', serif;
     margin: 0;
-    line-height: 1.8;
-    letter-spacing: 0.05em;
+    line-height: 1.9;
+    letter-spacing: 0.08em;
 }
 
-/* 導覽列：毛玻璃與極簡細線 */
+/* 導覽列：改為白色半透明，增加懸浮感 */
 .main-nav {
-    background: rgba(18, 18, 18, 0.85);
-    backdrop-filter: blur(15px);
-    padding: 1.5rem 0;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid var(--glass);
+    border-bottom: 1px solid var(--line-soft);
 }
 
 .main-nav ul {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 40px;
     list-style: none;
     margin: 0;
 }
 
 .main-nav a {
-    color: #888;
+    color: #999;
     text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    transition: all 0.4s ease;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    transition: color 0.3s;
+    font-weight: 500;
 }
 
 .main-nav a:hover, .main-nav a.active {
-    color: var(--accent-oxide);
-    text-shadow: 0 0 10px rgba(179, 63, 38, 0.5);
+    color: var(--accent-copper);
 }
 
-/* Hero 區：光影對比與結構 */
+/* Hero 區：從厚重感轉向「光影感」 */
 .hero {
-    height: 80vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #121212 100%);
-    border-bottom: 1px solid var(--line-gold);
+    background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-light) 100%);
+    padding: 0 20px;
 }
 
 .hero-image img {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid var(--line-gold);
-    padding: 8px;
-    margin-bottom: 40px;
-    transition: transform 0.5s ease;
-}
-
-.hero-image img:hover {
-    transform: scale(1.05);
+    border: 1px solid var(--line-soft);
+    padding: 6px;
+    margin-bottom: 30px;
+    background: white;
 }
 
 .hero-text h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     font-family: 'Playfair Display', serif;
     margin: 0;
-    color: #FFF;
+    color: #333;
+    font-weight: 500;
 }
 
 .hero-text .en-sub {
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: var(--line-gold);
-    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #999;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
     display: block;
 }
 
 .tagline {
-    font-size: 0.9rem;
-    color: var(--accent-oxide);
-    letter-spacing: 0.6em;
-    text-transform: uppercase;
-    border-top: 1px solid var(--glass);
-    border-bottom: 1px solid var(--glass);
-    padding: 10px 0;
+    font-size: 0.75rem;
+    color: var(--accent-copper);
+    letter-spacing: 0.5em;
+    margin-top: 20px;
 }
 
-/* 內容區塊 */
+/* 內容區塊：強調留白 */
 .content-container {
-    max-width: 800px;
-    margin: 100px auto;
-    padding: 0 40px;
+    max-width: 750px;
+    margin: 60px auto;
+    padding: 0 30px;
 }
 
 .section-title {
-    font-size: 1.8rem;
-    color: var(--accent-oxide);
+    font-size: 1.4rem;
+    color: var(--mineral-grey);
     margin-bottom: 40px;
     text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent-copper);
+    margin: 15px auto;
 }
 
 .story-section p {
     font-weight: 300;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-align: justify;
-    opacity: 0.9;
+    color: #555;
 }
 
-/* 勳章區塊：精品卡片設計 */
+/* 勳章區塊：從色塊改為「簡約線框」 */
 .impact-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .medal-card {
-    background: var(--glass);
-    padding: 30px 20px;
+    padding: 25px 15px;
     text-align: center;
-    border: 1px solid rgba(141, 110, 99, 0.2);
-    transition: all 0.3s ease;
+    border: 1px solid var(--line-soft);
+    background: white;
+    transition: transform 0.3s;
 }
 
 .medal-card:hover {
-    border-color: var(--accent-oxide);
-    background: rgba(179, 63, 38, 0.05);
+    transform: translateY(-5px);
+    border-color: var(--accent-copper);
 }
 
 .medal-card h3 {
-    font-size: 1rem;
-    color: var(--accent-oxide);
-    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--accent-copper);
+    margin-bottom: 10px;
 }
 
 .medal-card p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #999;
+    margin: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 60px;
+    font-size: 0.65rem;
+    color: #BBB;
+    letter-spacing: 0.2em;
 }
