@@ -1,9 +1,10 @@
+/* --- 1. 基礎設定與字體 --- */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;600&family=Montserrat:wght@400;700&display=swap');
 
 :root {
     --bg-white: #FFFFFF;
     --text-dark: #222222;
-    --accent-copper: #D35400;
+    --accent-copper: #D35400; /* 氧化橘 */
     --border-light: #F0F0F0;
 }
 
@@ -12,11 +13,10 @@ body {
     color: var(--text-dark);
     font-family: 'Noto Serif TC', serif;
     margin: 0;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    line-height: 1.8;
 }
 
-/* 導覽列：手機端支援橫向捲動免於擠壓 */
+/* --- 2. 導覽列樣式 --- */
 .main-nav {
     padding: 0.8rem 0;
     border-bottom: 1px solid var(--border-light);
@@ -29,12 +29,10 @@ body {
 .main-nav ul {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 35px;
     list-style: none;
     margin: 0;
-    padding: 0 15px;
-    overflow-x: auto; /* 手機端可橫滑 */
-    white-space: nowrap;
+    padding: 0;
 }
 
 .main-nav a {
@@ -48,21 +46,36 @@ body {
 
 .main-nav a.active { color: var(--accent-copper); }
 
-/* 主容器排版 */
+/* --- 3. 主容器佈局 --- */
 .profile-wrapper {
     display: flex;
-    flex-direction: row; /* 桌機預設左右 */
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 25px;
-    gap: 40px;
+    margin: 60px auto;
+    padding: 0 40px;
+    gap: 60px;
 }
 
-/* 照片區優化 */
+/* --- 4. 照片設計感優化 (核心更新區) --- */
 .photo-box {
-    flex: 0 0 420px; /* 桌機照片寬度 */
+    flex: 0 0 420px;
     position: relative;
+    padding: 15px; /* 為錯位效果預留空間 */
+}
+
+/* 照片後方的裝飾方塊 (設計感來源) */
+.photo-box::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent-copper);
+    opacity: 0.3;
+    z-index: -1;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .photo-box img {
@@ -70,23 +83,29 @@ body {
     height: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    border-radius: 4px;
-    transition: all 0.5s ease;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-radius: 2px;
+    border: 12px solid white; /* 模擬高級相片白邊 */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block;
 }
 
+/* 滑鼠懸停時的連動效果 */
 .photo-box:hover img {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(211, 84, 0, 0.15);
+    transform: translateY(-10px) translateX(10px);
+    box-shadow: -15px 30px 60px rgba(0,0,0,0.12);
 }
 
-/* 文字資訊區 */
-.info-box {
-    flex: 1;
+.photo-box:hover::before {
+    transform: translateY(10px) translateX(-10px);
+    opacity: 0.6;
 }
+
+/* --- 5. 文字與卡片樣式 --- */
+.info-box { flex: 1; }
 
 .name-block h1 {
-    font-size: clamp(2rem, 5vw, 3rem); /* 字體大小隨螢幕自動縮放 */
+    font-size: clamp(2rem, 5vw, 3rem);
     margin: 0;
     color: #000;
 }
@@ -96,7 +115,6 @@ body {
     font-size: 1.1rem;
     color: #AAA;
     display: block;
-    margin-bottom: 5px;
 }
 
 .tagline {
@@ -109,17 +127,11 @@ body {
     padding-bottom: 15px;
 }
 
-.bio-text {
-    font-size: 0.95rem;
-    color: #444;
-    margin-bottom: 30px;
-}
-
-/* 勳章區排版 */
 .impact-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
+    margin-top: 30px;
 }
 
 .impact-card {
@@ -128,70 +140,28 @@ body {
     border-top: 2px solid var(--accent-copper);
 }
 
-.impact-card h3 {
-    font-size: 0.85rem;
-    margin: 0 0 5px 0;
-    color: var(--accent-copper);
-}
+.impact-card h3 { font-size: 0.85rem; color: var(--accent-copper); margin: 0 0 5px 0; }
+.impact-card p { font-size: 0.75rem; color: #888; margin: 0; }
 
-.impact-card p {
-    font-size: 0.75rem;
-    color: #888;
-    margin: 0;
-}
-
-/* --- RWD 行動裝置調整 --- */
-
-/* 平板尺寸 (992px 以下) */
-@media (max-width: 992px) {
-    .photo-box {
-        flex: 0 0 320px; /* 縮小照片寬度 */
-    }
-    .profile-wrapper {
-        gap: 30px;
-    }
-}
-
-/* 手機尺寸 (768px 以下) */
+/* --- 6. 行動裝置 RWD --- */
 @media (max-width: 768px) {
     .profile-wrapper {
-        flex-direction: column; /* 改為垂直排列 */
+        flex-direction: column;
         align-items: center;
         text-align: center;
         margin: 20px auto;
+        padding: 0 20px;
     }
 
     .photo-box {
         flex: 0 0 auto;
-        width: 80%; /* 手機端照片佔寬 80% */
-        max-width: 300px;
-        margin-bottom: 20px;
+        width: 80%;
+        margin-bottom: 40px;
     }
 
-    .photo-box img {
-        aspect-ratio: 1 / 1; /* 手機端改為正方形較省空間 */
-        border-radius: 50%; /* 也可以考慮手機改圓形，更俐落 */
-    }
+    .photo-box::before { display: none; } /* 手機端取消裝飾框以保持整潔 */
 
-    .impact-row {
-        grid-template-columns: 1fr; /* 勳章在手機改為垂直堆疊 */
-        gap: 10px;
-    }
-
-    .impact-card {
-        border-top: none;
-        border-left: 3px solid var(--accent-copper);
-        text-align: left;
-    }
-
-    .tagline {
-        letter-spacing: 1.5px;
-    }
+    .impact-row { grid-template-columns: 1fr; }
 }
 
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 0.6rem;
-    color: #CCC;
-}
+footer { text-align: center; padding: 40px; font-size: 0.65rem; color: #CCC; }
