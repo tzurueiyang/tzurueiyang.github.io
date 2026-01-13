@@ -246,3 +246,75 @@ footer { text-align: center; padding: 40px; font-size: 0.65rem; color: #CCC; }
     border-radius: 50%;
 }
 .node-year { font-family: 'Montserrat'; font-weight: 700; color: var(--accent-copper); }
+/* --- D. People 區塊設計 --- */
+.people-section {
+    padding: 60px 0;
+    border-top: 1px solid var(--border-light);
+    margin-top: 80px;
+}
+
+.people-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.people-group {
+    background: #fff;
+    padding: 20px;
+    border-left: 4px solid var(--accent-copper); /* 醒目的地層橘垂直線 */
+    transition: 0.3s;
+}
+
+.group-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-copper);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.member-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 自動填滿欄位 */
+    gap: 15px;
+}
+
+.member-list li {
+    font-size: 0.95rem;
+    color: #444;
+    padding: 5px 0;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+/* 歷屆成員採用較為緊湊的標籤雲排版 */
+.former-members {
+    background: #fcfcfc;
+    border-left: 4px solid #ccc; /* 歷屆成員使用中性色 */
+}
+
+.former-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.former-grid span {
+    font-size: 0.85rem;
+    color: #777;
+    background: #fff;
+    padding: 6px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 20px; /* 藥丸型設計 */
+}
+
+/* 手機版優化 */
+@media (max-width: 768px) {
+    .member-list {
+        grid-template-columns: 1fr;
+    }
+}
