@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Fieldwork | Dr. Tzu-Ruei Yang</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="./index.html">PROFILE</a></li>
+            <li><a href="./research.html" class="active">RESEARCH & FIELDWORK</a></li>
+            <li><a href="./publications.html">PUBLICATIONS & EDITORIAL</a></li>
+            <li><a href="./outreach.html">OUTREACH & CURATION</a></li>
+            <li><a href="./connect.html">CONNECT</a></li>
+        </ul>
+    </nav>
+
+    <main class="content-container" style="max-width: 1100px;">
+        <section class="research-section">
+            <h2 class="section-title">A. Global Exploration</h2>
+            <div class="map-canvas">
+                <div class="map-pin" style="top: 35%; left: 48%;" data-title="德國波昂" data-desc="恐龍生殖生理學研究基地"></div>
+                <div class="map-pin" style="top: 32%; left: 15%;" data-title="美國蒙大拿" data-desc="白堊紀地層挖掘"></div>
+                <div class="map-pin" style="top: 42%; left: 78%;" data-title="中國遼寧" data-desc="竊蛋龍化石與生殖行為研究"></div>
+                <div class="map-pin" style="top: 55%; left: 82%;" data-title="台灣恆春" data-desc="台灣史上最完整大型鯨魚化石挖掘"></div>
+                <div class="map-info-box" id="map-info">點擊地圖標記點查看考察實錄</div>
+            </div>
+        </section>
+
+        <section class="research-section">
+            <h2 class="section-title">B. Core Research Themes</h2>
+            <div class="theme-grid">
+                <div class="theme-card">
+                    <div class="theme-img-box"><img src="./assets/theme1.jpg" alt="恐龍生殖"></div>
+                    <div class="theme-content">
+                        <h3>恐龍生殖生理學</h3>
+                        <p>研究竊蛋龍類與早期鳥類的繁衍行為，還原中生代生命密碼。</p>
+                    </div>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-img-box"><img src="./assets/theme2.jpg" alt="埋藏學"></div>
+                    <div class="theme-content">
+                        <h3>埋藏學與環境重建</h3>
+                        <p>分析化石形成過程，解讀古地理環境對物種存續的影響。</p>
+                    </div>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-img-box"><img src="./assets/theme3.jpg" alt="鯨豚化石"></div>
+                    <div class="theme-content">
+                        <h3>台灣脊椎動物化石</h3>
+                        <p>聚焦恆春鯨魚化石等在地發現，建立台灣大型脊椎動物演化史。</p>
+                    </div>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-img-box"><img src="./assets/theme4.jpg" alt="生物材料"></div>
+                    <div class="theme-content">
+                        <h3>生物材料演化</h3>
+                        <p>微觀骨骼組織構造，探討脊椎動物在演化路徑上的功能適應。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="research-section">
+            <h2 class="section-title">C. Major Discoveries (Impact)</h2>
+            <div class="impact-timeline">
+                <div class="time-node">
+                    <span class="node-year">2022</span>
+                    <h4>恆春鯨魚化石挖掘</h4>
+                    <p>主持並完成台灣史上最完整的鯨魚化石挖掘工作，引發媒體廣泛關注。</p>
+                </div>
+                <div class="time-node">
+                    <span class="node-year">2020</span>
+                    <h4>恐龍孵化行為新解</h4>
+                    <p>於國際期刊發表關於恐龍蛋殼結構之研究，挑戰過去學界之假設。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>© 2024 DR. TZU-RUEI YANG. ALL RIGHTS RESERVED.</footer>
+
+    <script>
+        document.querySelectorAll('.map-pin').forEach(pin => {
+            pin.addEventListener('click', () => {
+                const info = `<strong>${pin.dataset.title}</strong><br>${pin.dataset.desc}`;
+                document.getElementById('map-info').innerHTML = info;
+            });
+        });
+    </script>
+</body>
+</html>
