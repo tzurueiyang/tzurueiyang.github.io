@@ -246,75 +246,110 @@ footer { text-align: center; padding: 40px; font-size: 0.65rem; color: #CCC; }
     border-radius: 50%;
 }
 .node-year { font-family: 'Montserrat'; font-weight: 700; color: var(--accent-copper); }
-/* --- D. People 區塊設計 --- */
+/* --- D. People 區塊視覺強化 --- */
 .people-section {
-    padding: 60px 0;
+    padding: 100px 0;
+    background: linear-gradient(to bottom, #ffffff, #fafafa);
     border-top: 1px solid var(--border-light);
-    margin-top: 80px;
 }
 
 .people-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
 }
 
 .people-group {
-    background: #fff;
-    padding: 20px;
-    border-left: 4px solid var(--accent-copper); /* 醒目的地層橘垂直線 */
-    transition: 0.3s;
+    position: relative;
+}
+
+.group-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
 .group-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--accent-copper);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    margin: 0;
+    white-space: nowrap;
 }
 
-.member-list {
-    list-style: none;
-    padding: 0;
+/* 標題旁的裝飾線 */
+.group-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent-copper), transparent);
+    opacity: 0.3;
+}
+
+.member-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 自動填滿欄位 */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 15px;
 }
 
-.member-list li {
-    font-size: 0.95rem;
+.member-card {
+    background: white;
+    padding: 15px 20px;
+    border: 1px solid #eee;
+    font-size: 0.9rem;
     color: #444;
-    padding: 5px 0;
-    border-bottom: 1px solid #f9f9f9;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* 歷屆成員採用較為緊湊的標籤雲排版 */
-.former-members {
-    background: #fcfcfc;
-    border-left: 4px solid #ccc; /* 歷屆成員使用中性色 */
+.member-card::before {
+    content: '•';
+    color: var(--accent-copper);
+    margin-right: 10px;
+    font-weight: bold;
 }
 
-.former-grid {
+.member-card:hover {
+    background: var(--accent-copper);
+    color: white;
+    border-color: var(--accent-copper);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(211, 84, 0, 0.2);
+}
+
+.member-card:hover::before { color: white; }
+
+/* 歷屆成員 (Former Members) 輕量化處理 */
+.former-section {
+    margin-top: 40px;
+    padding: 40px;
+    background: #fff;
+    border: 1px dashed #ddd;
+}
+
+.former-flex {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px 25px;
 }
 
-.former-grid span {
+.former-name {
     font-size: 0.85rem;
-    color: #777;
-    background: #fff;
-    padding: 6px 12px;
-    border: 1px solid var(--border-light);
-    border-radius: 20px; /* 藥丸型設計 */
+    color: #888;
+    position: relative;
+    transition: color 0.3s;
 }
 
-/* 手機版優化 */
+.former-name:hover { color: var(--accent-copper); }
+
+/* RWD 適配 */
 @media (max-width: 768px) {
-    .member-list {
-        grid-template-columns: 1fr;
-    }
+    .member-grid { grid-template-columns: 1fr 1fr; }
+    .people-section { padding: 60px 20px; }
 }
