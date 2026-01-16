@@ -255,132 +255,148 @@ body.paper-white-bg {
 
 footer { text-align: center; padding: 60px; font-size: 0.7rem; color: #CCC; }
 /* ==========================================================================
-   P4: OUTREACH 專屬美術館網格樣式
+   P4: OUTREACH 修正版 - 權威感與比例優化
    ========================================================================== */
 
 .gallery-bg {
-    background-color: #f8f8f8; /* 藝廊灰白底 */
+    background-color: #f4f4f4; /* 稍微深一點的灰色，讓白色卡片更跳脫 */
 }
 
-.curator-intro {
-    max-width: 800px;
-    margin: 0 auto 60px auto;
-    text-align: center;
-    color: #666;
-    font-size: 1.1rem;
-    line-height: 2;
-}
-
-.gallery-sub-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-    color: var(--accent-copper);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* 美術館瀑布流網格 */
+/* --- 特展卡片樣式 --- */
 .masonry-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-rows: 250px;
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-auto-rows: 300px;
+    gap: 25px;
     margin-bottom: 80px;
 }
 
 .grid-item {
     position: relative;
     overflow: hidden;
-    background: #333;
+    background: #222;
     border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-.grid-item.tall { grid-row: span 2; } /* 長型海報感 */
-.grid-item.wide { grid-column: span 2; } /* 橫向全景感 */
+.grid-item.tall { grid-row: span 2; } 
+.grid-item.wide { grid-column: span 2; }
 
-.grid-item img {
+/* 確保主視覺照片填滿且不變形 */
+.main-visual {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    opacity: 0.7;
-    transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    object-fit: cover; /* 關鍵：裁切並填滿容器 */
+    opacity: 0.8;
+    transition: 0.6s ease;
 }
 
-.card-overlay {
+/* --- YouTube 比例修正：維持 16:9 --- */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 比例 (9 / 16 = 0.5625) */
+    background: #000;
+}
+
+.video-container iframe {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    padding: 30px;
-    z-index: 2;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: white;
+    height: 100%;
+    border: 0;
 }
 
-.category-tag {
+/* --- 講座足跡：權威感強化設計 --- */
+.talks-footprint-premium {
+    background: #111; /* 極致深黑展現專業感 */
+    color: white;
+    padding: 80px 60px;
+    margin-top: 60px;
+    border-radius: 0; /* 滿版設計感 */
+    position: relative;
+}
+
+.footprint-container {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.stats-sidebar {
+    flex: 0 0 200px;
+}
+
+.stat-item {
+    margin-bottom: 40px;
+    border-left: 4px solid var(--accent-copper);
+    padding-left: 20px;
+}
+
+.stat-num {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--accent-copper);
+    line-height: 1;
+}
+
+.stat-desc {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footprint-content {
+    flex: 1;
+}
+
+.authority-badge {
+    background: var(--accent-copper);
+    color: white;
+    padding: 4px 12px;
     font-size: 0.7rem;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent-copper);
     font-weight: 700;
-}
-
-.view-btn {
+    margin-bottom: 25px;
     display: inline-block;
-    margin-top: 15px;
-    padding: 8px 15px;
-    border: 1px solid white;
-    color: white;
-    text-decoration: none;
-    font-size: 0.8rem;
-    transition: 0.3s;
 }
 
-.view-btn:hover { background: white; color: black; }
-
-.grid-item:hover img { transform: scale(1.1); opacity: 0.4; }
-
-/* 影音牆排版 */
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 80px;
+.footprint-content h4 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
 }
 
-.video-card {
-    background: white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: 0.3s;
+.footprint-content p {
+    color: #bbb;
+    font-size: 1.1rem;
+    line-height: 2.2;
+    text-align: justify;
 }
 
-.video-info { padding: 20px; }
-.video-info h5 { margin: 0 0 5px 0; font-size: 1rem; }
-.video-info p { margin: 0; font-size: 0.8rem; color: #999; }
-
-/* 講座足跡 */
-.talks-footprint {
-    background: white;
-    padding: 60px;
-    border: 1px solid #eee;
+/* 技能標籤 */
+.skill-tags {
+    margin-top: 40px;
     display: flex;
-    align-items: center;
+    gap: 12px;
 }
 
-.talk-stats {
-    flex: 0 0 200px;
-    border-right: 2px solid var(--accent-copper);
-    margin-right: 40px;
+.skill-tags span {
+    border: 1px solid #444;
+    padding: 6px 18px;
+    font-size: 0.8rem;
+    color: #888;
+    background: rgba(255,255,255,0.05);
 }
 
-.stat-number { font-size: 4rem; font-weight: 800; color: var(--accent-copper); font-family: 'Montserrat'; }
-.stat-label { display: block; font-size: 0.9rem; letter-spacing: 2px; color: #999; }
-
-@media (max-width: 768px) {
+/* RWD 適應 */
+@media (max-width: 992px) {
+    .footprint-container { flex-direction: column; gap: 40px; }
+    .stats-sidebar { display: flex; width: 100%; justify-content: space-around; }
     .grid-item.wide { grid-column: span 1; }
-    .talks-footprint { flex-direction: column; padding: 30px; text-align: center; }
-    .talk-stats { border-right: none; border-bottom: 2px solid var(--accent-copper); margin: 0 0 20px 0; padding-bottom: 20px; }
 }
