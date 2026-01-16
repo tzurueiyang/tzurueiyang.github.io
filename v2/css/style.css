@@ -255,108 +255,160 @@ body.paper-white-bg {
 
 footer { text-align: center; padding: 60px; font-size: 0.7rem; color: #CCC; }
 /* ==========================================================================
-   P4: OUTREACH 終極修正 - 確保圖片 100% 完整顯示
+   P4: OUTREACH 美術館不對稱網格與閱讀優化
    ========================================================================== */
 
 .gallery-bg {
     background-color: #fdfdfd;
 }
 
-.masonry-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-auto-rows: auto; /* 讓格子高度自動根據圖片撐開 */
-    gap: 40px;
-    margin-bottom: 80px;
+/* 增大導言字體 */
+.curator-intro {
+    font-size: 1.3rem;
+    line-height: 2;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    color: #444;
+    text-align: center;
 }
 
-.grid-item {
-    position: relative;
+/* 核心 12 欄位網格系統 */
+.museum-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 40px;
+    margin-bottom: 100px;
+}
+
+.grid-card {
     background: #fff;
-    border: 1px solid #eee; /* 增加邊框讓美術館質感更好 */
+    border: 1px solid #eee;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
-/* 移除 wide 在手機版可能造成的跑版 */
-.grid-item.wide {
-    grid-column: span 2;
+.grid-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
 }
 
-/* --- 核心修正：確保圖片不被裁切 --- */
-.main-visual {
+/* 琥珀展：設定為大型視覺焦點 */
+.feature-exhibition {
+    grid-column: span 7; /* 佔據左側 7 欄 */
+}
+.feature-exhibition .card-media img {
     width: 100%;
-    height: auto; /* 讓高度隨圖片比例縮放 */
-    display: block;
-    object-fit: contain; /* 確保整張圖都看得見，不裁切 */
-    transition: transform 0.5s ease;
+    height: 600px; /* 增加高度，解決琥珀照片太小的問題 */
+    object-fit: cover;
 }
 
-/* 重新設計文字遮罩，改為在圖片下方，不遮擋圖片內容 */
-.card-overlay {
-    padding: 20px 25px;
-    background: #fff; /* 背景改為白色，因為圖片已經完整顯示了 */
-    border-top: 1px solid #f0f0f0;
+/* 鯨掘展：橫向佈局 */
+.wide-exhibition {
+    grid-column: span 12; /* 佔據全寬 */
+    flex-direction: row;
+}
+.wide-exhibition .card-media { flex: 1.5; }
+.wide-exhibition .card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.wide-exhibition .card-media img { height: 450px; width: 100%; object-fit: cover; }
+
+/* 影片方塊：5 欄寬度 */
+.video-item {
+    grid-column: span 5;
 }
 
-.card-overlay h4 {
-    margin: 5px 0;
-    font-size: 1.3rem;
-    color: #222;
+/* 內容文字增大與間距 */
+.card-content {
+    padding: 40px;
+}
+.card-content h4 {
+    font-size: 2rem; /* 標題明顯增大 */
+    margin: 10px 0 20px 0;
     font-family: 'Noto Serif TC', serif;
+    color: #111;
 }
-
-.card-overlay p {
-    font-size: 0.9rem;
-    color: #666;
-    margin: 5px 0;
+.card-content p {
+    font-size: 1.15rem; /* 內文增大 */
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
 }
 
 .category-tag {
     color: var(--accent-copper);
     font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* 按鈕美化 */
+/* 查看詳情按鈕 */
 .view-btn {
     display: inline-block;
-    margin-top: 15px;
-    padding: 8px 18px;
-    border: 1px solid #222;
+    padding: 12px 25px;
+    border: 1.5px solid #222;
     color: #222 !important;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 500;
     transition: 0.3s;
+    width: fit-content;
 }
-
 .view-btn:hover {
     background: #222;
     color: #fff !important;
 }
 
-/* 保持影片比例 */
+/* 影片嵌入比例 16:9 */
 .video-container {
     position: relative;
     padding-top: 56.25%;
     background: #000;
 }
-
 .video-container iframe {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
 }
+.video-info {
+    padding: 25px;
+    background: #fcfcfc;
+}
+.video-info h5 {
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+}
+.video-info p {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+}
 
-/* 講座足跡保持原樣 */
+/* 講座足跡內容優化 */
 .talks-footprint-premium {
     background: #111;
     color: white;
-    padding: 60px;
-    margin-top: 50px;
+    padding: 100px 60px;
+    margin-top: 80px;
+}
+.footprint-content h4 {
+    font-size: 2.4rem; /* 增大標題 */
+    margin-bottom: 30px;
+}
+.footprint-content p {
+    font-size: 1.25rem; /* 增大內容 */
+    line-height: 2.2;
+    color: #ccc;
+}
+.stat-num {
+    font-size: 4.5rem; /* 數據特大化 */
 }
 
-@media (max-width: 768px) {
-    .grid-item.wide { grid-column: span 1; }
-    .masonry-grid { grid-template-columns: 1fr; }
+/* 響應式適應 */
+@media (max-width: 1100px) {
+    .museum-grid { display: flex; flex-direction: column; }
+    .wide-exhibition { flex-direction: column; }
+    .feature-exhibition .card-media img, 
+    .wide-exhibition .card-media img { height: 400px; }
+    .talks-footprint-premium { padding: 60px 30px; }
+    .footprint-container { flex-direction: column; gap: 50px; }
 }
