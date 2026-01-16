@@ -22,108 +22,100 @@
     <main class="content-container">
         <header class="gallery-header">
             <h2 class="section-title">Outreach & Curation</h2>
-            <p class="curator-intro">
-                身為古生物學家，我同時扮演「解碼者」與「敘事者」。致力於將地層中沉默的證據轉化為大眾觸手可及的視覺驚喜，讓古生物學不再只是教科書上的名詞，而是活生生的時空冒險。
-            </p>
+            <p class="curator-intro">身為古生物學家，我同時扮演「解碼者」與「敘事者」。致力於將地層中沈默的證據轉化為大眾觸手可及的視覺驚喜。</p>
         </header>
 
-        <section class="outreach-section">
-            <h3 class="gallery-sub-title"><i class="fa-solid fa-museum"></i> Curatorial Portfolio 博物館策展實務</h3>
-            <div class="masonry-grid">
-                <div class="grid-item tall">
-                    <div class="card-overlay">
-                        <span class="category-tag">2022.04.29</span>
-                        <h4>《那一刻—琥珀的記憶》</h4>
-                        <p>國立自然科學博物館</p>
-                        <a href="https://web3.nmns.edu.tw/Exhibits/111/AMBER/index.html" target="_blank" class="view-btn">查看展覽詳情</a>
-                    </div>
-                    <img src="./images/amber_main.jpg" alt="那一刻—琥珀的記憶" class="main-visual">
+        <section class="museum-grid">
+            <div class="grid-card feature-exhibition">
+                <div class="card-media">
+                    <img src="./images/amber_main.jpg" alt="琥珀的記憶">
                 </div>
+                <div class="card-content">
+                    <span class="category-tag">SPECIAL EXHIBITION</span>
+                    <h4>《那一刻—琥珀的記憶》</h4>
+                    <p>國立自然科學博物館。透過樹脂遺骸，窺見億萬年前的生態瞬間。</p>
+                    <a href="#" class="view-btn">查看展覽詳情</a>
+                </div>
+            </div>
 
-                <div class="grid-item wide">
-                    <div class="card-overlay">
-                        <span class="category-tag">2025.06.27</span>
-                        <h4>《鯨掘》</h4>
-                        <p>台灣史上最完整鯨魚化石挖掘與展示計畫</p>
-                        <a href="https://web3.nmns.edu.tw/Exhibits/114/giant-unearthed/" target="_blank" class="view-btn">查看展覽詳情</a>
-                    </div>
-                    <img src="./images/whale_main.jpg" alt="鯨掘" class="main-visual">
+            <div class="grid-card wide-exhibition">
+                <div class="card-media">
+                    <img src="./images/whale_main.jpg" alt="鯨掘">
+                </div>
+                <div class="card-content">
+                    <span class="category-tag">MAJOR DISCOVERY</span>
+                    <h4>《鯨掘》</h4>
+                    <p>台灣史上最完整鯨魚化石挖掘與展示計畫。</p>
+                    <a href="#" class="view-btn">查看展覽詳情</a>
                 </div>
             </div>
         </section>
 
-        <section class="outreach-section">
-            <h3 class="gallery-sub-title"><i class="fa-solid fa-clapperboard"></i> Media & Scientific Communication 影音與傳播</h3>
-            <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/E3zMWV2y-do" frameborder="0" allowfullscreen></iframe>
+        <section class="video-carousel-section">
+            <h3 class="gallery-sub-title"><i class="fa-solid fa-clapperboard"></i> Media & Communication</h3>
+            <div class="carousel-wrapper">
+                <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="video-track" id="videoTrack">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/E3zMWV2y-do" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info"><h5>古生物學家的時空旅行</h5></div>
                     </div>
-                    <div class="video-info">
-                        <h5>古生物學家的時空旅行</h5>
-                        <p>大愛人文講堂 | 2022</p>
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/eQSY8jE9f_Q" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info"><h5>台灣無化石專法：專家觀點</h5></div>
                     </div>
-                </div>
-
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/eQSY8jE9f_Q" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h5>台灣無化石專法：專家觀點</h5>
-                        <p>公視獨立特派員 | 2023</p>
-                    </div>
-                </div>
-
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/mVvw7clDT-Q" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h5>恐龍的崛起與消亡</h5>
-                        <p>臺灣科學特殊人才提升計畫 | 2025</p>
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/mVvw7clDT-Q" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info"><h5>恐龍的崛起與消亡</h5></div>
                     </div>
                 </div>
+                <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
             </div>
         </section>
 
-        <section class="outreach-section talks-footprint-premium">
-            <h3 class="gallery-sub-title"><i class="fa-solid fa-earth-americas"></i> Scientific Footprints 講座足跡與社會影響</h3>
-            
-            <div class="footprint-container">
-                <div class="stats-sidebar">
+        <section class="talks-footprint-premium">
+            <div class="footprint-grid">
+                <div class="stats-box">
                     <div class="stat-item">
                         <span class="stat-num">5+</span>
-                        <span class="stat-desc">國籍語言學術交流</span>
+                        <span class="stat-desc">國籍語言交流</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-num">25+</span>
-                        <span class="stat-desc">國際與國內專業講座</span>
+                        <span class="stat-desc">國內外專業講座</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-num">10+</span>
-                        <span class="stat-desc">頂尖期刊審稿資歷</span>
+                        <span class="stat-desc">頂尖期刊審稿</span>
                     </div>
                 </div>
-
-                <div class="footprint-content">
+                <div class="text-box">
                     <div class="authority-badge">Academic Authority</div>
                     <h4>從維也納到恆春，跨越五國的科學對話</h4>
-                    <p>
-                        楊子睿博士的學術足跡跨越奧地利維也納（EGU）、美國、德國、中國及日本。他不僅在 **國際頂尖學術年會** 發表恐龍生殖生理學的突破，更受邀於 **中央研究院「展望」講座**、**PanSci 泛科學** 等重量級科普平台，擔任引領大眾認知演化史的關鍵敘事者。
-                    </p>
+                    <p>楊子睿博士的學術足跡跨越奧地利維也納（EGU）、美國、德國、中國及日本。他不僅在國際頂尖學術年會發表突破，更受邀於中央研究院「展望」講座、PanSci 泛科學等重量級科普平台。</p>
                     <div class="skill-tags">
-                        <span>學術英語</span><span>專業德語</span><span>國際會議 Oral Presentation</span><span>科普專欄審訂</span>
+                        <span>學術英語</span><span>專業德語</span><span>Oral Presentation</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>© 2024 DR. TZU-RUEI YANG. ALL RIGHTS RESERVED.</footer>
-
     <script>
-        // JS 邏輯保持不變
+        let currentIdx = 0;
+        function moveSlide(direction) {
+            const track = document.getElementById('videoTrack');
+            const cardWidth = document.querySelector('.video-card').offsetWidth + 30;
+            const maxIdx = track.children.length - 1;
+            currentIdx = Math.max(0, Math.min(currentIdx + direction, maxIdx));
+            track.style.transform = `translateX(-${currentIdx * cardWidth}px)`;
+        }
     </script>
 </body>
 </html>
