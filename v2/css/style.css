@@ -185,11 +185,22 @@ body.paper-white-bg {
     padding: 25px 0;
     border-bottom: 1px solid #eee;
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 100px 1fr; /* 年份固定 100px，剩餘空間給文章名稱 */
     gap: 20px;
+    align-items: baseline;
+    text-align: left;
+}
+.pub-detail {
+    font-size: 1.05rem; /* 微調文章標題大小 */
+    color: #333;
 }
 
-.pub-year { font-family: 'Montserrat'; font-weight: 700; color: #bbb; }
+.pub-year {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #bbb;
+    font-size: 1rem;
+}
 
 .drawer-content { display: none; } /* 初始隱藏 */
 
