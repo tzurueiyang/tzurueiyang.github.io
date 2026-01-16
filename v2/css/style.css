@@ -484,3 +484,60 @@ footer { text-align: center; padding: 40px; font-size: 0.65rem; color: #CCC; }
 .stat-card:hover { background: #1a1a1a; color: #fff; }
 .stat-card h4 { font-family: 'Montserrat'; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px; }
 .stat-val { font-size: 2.5rem; font-family: 'Montserrat'; font-weight: 700; margin-bottom: 15px; }
+:root {
+    --base-font-size: 18px; /* 全域字體加大 */
+}
+
+body {
+    font-size: var(--base-font-size);
+    line-height: 1.8;
+}
+
+/* 標題去編號並調整 */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #333;
+    display: inline-block;
+}
+
+/* 高級感抽屜按鈕設計 */
+.drawer-btn-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.drawer-btn {
+    background: transparent;
+    border: 1px solid #222;
+    padding: 15px 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+}
+
+.drawer-btn:hover {
+    color: #fff;
+    background-color: #222;
+    padding-right: 50px;
+}
+
+.drawer-btn::after {
+    content: '↓';
+    position: absolute;
+    right: -20px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.drawer-btn:hover::after {
+    right: 20px;
+    opacity: 1;
+}
