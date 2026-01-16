@@ -266,7 +266,7 @@ footer { text-align: center; padding: 60px; font-size: 0.7rem; color: #CCC; }
 .masonry-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-auto-rows: 300px;
+    grid-auto-rows: 450px; /* 將 300px 改為 450px，讓格位變高 */
     gap: 25px;
     margin-bottom: 80px;
 }
@@ -286,9 +286,21 @@ footer { text-align: center; padding: 60px; font-size: 0.7rem; color: #CCC; }
 .main-visual {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 關鍵：裁切並填滿容器 */
+    object-fit: cover;
+    object-position: top; /* 讓照片從頂部開始對齊，避免切到主視覺的文字標題 */
     opacity: 0.8;
     transition: 0.6s ease;
+}
+/* 強化下方文字遮罩的可讀性，避免背景太雜亂 */
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 30px 20px 30px; /* 增加漸層深度 */
+    z-index: 2;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9)); /* 加深遮罩 */
+    color: white;
 }
 
 /* --- YouTube 比例修正：維持 16:9 --- */
