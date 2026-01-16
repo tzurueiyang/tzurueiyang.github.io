@@ -1,20 +1,19 @@
 /* ==========================================================================
-   1. 基礎設定與核心變數 (加強字體與顏色)
+   1. 基礎設定與核心變數 (Dr. Yang 品牌色與大字體)
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;600&family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;600&family=Montserrat:wght@400;700;800&display=swap');
 
 :root {
     --bg-white: #FFFFFF;
-    --bg-paper: #fcfbf9;     /* P3 專用紙張色 */
+    --bg-paper: #fcfbf9;      
+    --bg-gallery: #fdfdfd;   /* 美術館純淨白 */
     --text-dark: #222222;
-    --accent-copper: #D35400; /* 氧化橘 */
+    --accent-copper: #D35400; /* 氧化銅橘 */
     --border-light: #F0F0F0;
-    --base-font-size: 18px;   /* 依要求加大全局字體 */
+    --base-font-size: 18px;   /* 全局字體增大 */
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     background-color: var(--bg-white);
@@ -23,21 +22,15 @@ body {
     font-size: var(--base-font-size);
     margin: 0;
     line-height: 1.8;
-    transition: background-color 0.3s ease;
-}
-
-/* 專屬 P3 的背景類別，請在 publications.html 的 body 標籤加上這個 class */
-body.paper-white-bg {
-    background-color: var(--bg-paper);
 }
 
 /* ==========================================================================
-   2. 導覽列與通用容器 (確保置中)
+   2. 導覽列與通用容器
    ========================================================================== */
 .main-nav {
-    padding: 0.8rem 0;
+    padding: 1rem 0;
     border-bottom: 1px solid var(--border-light);
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.98);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -46,7 +39,7 @@ body.paper-white-bg {
 .main-nav ul {
     display: flex;
     justify-content: center;
-    gap: 35px;
+    gap: 40px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -55,344 +48,226 @@ body.paper-white-bg {
 .main-nav a {
     color: #999;
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 .main-nav a.active { color: var(--accent-copper); }
 
-/* 全局內容置中容器 */
 .content-container {
-    max-width: 1100px;
-    margin: 60px auto;   /* 關鍵：水平置中 */
+    max-width: 1200px;
+    margin: 80px auto;
     padding: 0 40px;
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     font-weight: 800;
     font-family: 'Montserrat', sans-serif;
-    letter-spacing: -0.02em;
-    margin: 0 auto 50px auto;
-    border-bottom: 2px solid #333;
-    display: block;      /* 改為 block 以便置中 */
-    width: fit-content;  /* 寬度隨內容縮放 */
+    margin: 0 auto 60px auto;
+    border-bottom: 3px solid #111;
+    width: fit-content;
     text-align: center;
 }
 
 /* ==========================================================================
-   3. P1: PROFILE 樣式
+   3. P4: OUTREACH 美術館不對稱網格系統 (核心復原)
    ========================================================================== */
-.profile-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; /* 水平置中 */
-    max-width: 1100px;
-    margin: 60px auto;
-    gap: 60px;
+.gallery-bg { background-color: var(--bg-gallery); }
+
+.curator-intro {
+    font-size: 1.35rem; /* 引言增大 */
+    line-height: 2.1;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    color: #444;
+    text-align: center;
 }
 
-.photo-box {
-    flex: 0 0 420px;
-    position: relative;
-    padding: 15px;
-}
-
-.photo-box img {
-    width: 100%;
-    border: 12px solid white;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-
-.name-block h1 { font-size: 3rem; margin: 0; }
-.tagline { color: var(--accent-copper); letter-spacing: 3px; font-weight: 700; }
-
-/* ==========================================================================
-   4. P2: RESEARCH 樣式 (地圖置中)
-   ========================================================================== */
-.map-canvas {
-    width: 100%;
-    max-width: 1000px;
-    height: 450px;
-    margin: 40px auto;   /* 置中關鍵 */
-    background: #fafafa;
-    border: 1px solid var(--border-light);
-    position: relative;
-    background-image: linear-gradient(#eee 1px, transparent 1px), linear-gradient(90deg, #eee 1px, transparent 1px);
-    background-size: 30px 30px;
-}
-
-.map-pin {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    background: var(--accent-copper);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.theme-grid {
+/* 12 欄位錯落網格 */
+.museum-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin: 0 auto;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 40px;
+    margin-bottom: 120px;
 }
 
-/* ==========================================================================
-   5. P3: PUBLICATIONS 專屬樣式 (高級感與抽屜)
-   ========================================================================== */
-.pub-section { margin-bottom: 100px; }
-
-.highlight-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 30px;
-}
-
-.highlight-item {
-    background: #fff;
-    padding: 35px;
-    border: 1px solid #e0e0e0;
-    position: relative;
-    transition: 0.4s;
-}
-
-.highlight-item:hover {
-    border-color: var(--accent-copper);
-    transform: translateY(-5px);
-}
-
-.highlight-item::before {
-    content: 'TOP RESEARCH';
-    position: absolute;
-    top: -10px; right: 20px;
-    background: var(--accent-copper); color: #fff;
-    font-size: 0.65rem; padding: 2px 10px; font-family: 'Montserrat';
-}
-
-.service-list {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 60px;
-}
-
-/* 論文列表置中微調 */
-.pub-list { list-style: none; padding: 0; width: 100%; }
-.pub-list li {
-    padding: 25px 0;
-    border-bottom: 1px solid #eee;
-    display: grid;
-    grid-template-columns: 100px 1fr; /* 年份固定 100px，剩餘空間給文章名稱 */
-    gap: 20px;
-    align-items: baseline;
-    text-align: left;
-}
-.pub-detail {
-    font-size: 1.05rem; /* 微調文章標題大小 */
-    color: #333;
-}
-
-.pub-year {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: #bbb;
-    font-size: 1rem;
-}
-
-.drawer-content { display: none; } /* 初始隱藏 */
-
-/* 高級感幽靈按鈕 */
-.drawer-btn-container { text-align: center; margin-top: 50px; }
-.drawer-btn {
-    background: transparent;
-    border: 1px solid #222;
-    padding: 18px 50px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.drawer-btn:hover {
-    color: #fff;
-    background-color: #222;
-}
-
-/* 數據卡片 */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-.stat-card {
+.grid-card {
     background: #fff;
     border: 1px solid #eee;
-    padding: 50px;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.stat-card:hover { background: #1a1a1a; color: #fff; }
-
-/* ==========================================================================
-   6. 響應式 RWD (手機版自動置中)
-   ========================================================================== */
-@media (max-width: 768px) {
-    .profile-wrapper, .service-list, .theme-grid, .stats-grid {
-        flex-direction: column;
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .photo-box { flex: 0 0 auto; width: 100%; }
-    .pub-list li { grid-template-columns: 1fr; gap: 5px; }
-    .content-container { padding: 0 20px; }
+.grid-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
 
-footer { text-align: center; padding: 60px; font-size: 0.7rem; color: #CCC; }
-/* ==========================================================================
-   P4: OUTREACH 修正版 - 權威感與比例優化
-   ========================================================================== */
-
-.gallery-bg {
-    background-color: #f4f4f4; /* 稍微深一點的灰色，讓白色卡片更跳脫 */
+/* 琥珀展：佔據 7 欄，照片大氣展現 */
+.feature-exhibition {
+    grid-column: span 7;
 }
-
-/* --- 特展卡片樣式 --- */
-.masonry-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-auto-rows: 300px;
-    gap: 25px;
-    margin-bottom: 80px;
-}
-
-.grid-item {
-    position: relative;
-    overflow: hidden;
-    background: #222;
-    border-radius: 4px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-}
-
-.grid-item.tall { grid-row: span 2; } 
-.grid-item.wide { grid-column: span 2; }
-
-/* 確保主視覺照片填滿且不變形 */
-.main-visual {
+.feature-exhibition .card-media img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* 關鍵：裁切並填滿容器 */
-    opacity: 0.8;
-    transition: 0.6s ease;
+    height: 650px; /* 高度增加 */
+    object-fit: cover;
 }
 
-/* --- 1. 修正 YouTube 壓縮問題 (維持 16:9) --- */
+/* 影片方塊：佔據 5 欄 */
+.video-item {
+    grid-column: span 5;
+}
+
+/* 鯨掘展：全寬橫向佈局 */
+.wide-exhibition {
+    grid-column: span 12;
+    flex-direction: row;
+}
+.wide-exhibition .card-media { flex: 1.6; }
+.wide-exhibition .card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.wide-exhibition .card-media img { height: 500px; width: 100%; object-fit: cover; }
+
+/* 網格文字內容優化 */
+.card-content { padding: 45px; }
+.card-content h4 {
+    font-size: 2.2rem; /* 標題明顯增大 */
+    margin: 15px 0 25px 0;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+}
+.card-content p {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: #555;
+}
+
+.category-tag {
+    color: var(--accent-copper);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.view-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: 2px solid #111;
+    color: #111 !important;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.view-btn:hover { background: #111; color: #fff !important; }
+
+/* 影片容器 16:9 */
 .video-container {
     position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9; /* 強制保持標準比例 */
+    padding-top: 56.25%;
     background: #000;
 }
-
 .video-container iframe {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
 }
+.video-info { padding: 30px; background: #fafafa; border-top: 1px solid #eee; }
+.video-info h5 { font-size: 1.3rem; margin: 0 0 10px 0; }
 
-/* --- 2. 講座足跡權威性設計 --- */
+/* ==========================================================================
+   4. 講座足跡權威性設計 (Authority UX 復原)
+   ========================================================================== */
 .talks-footprint-premium {
-    background: #1a1a1a; /* 深色底展現莊重權威感 */
+    background: #111; /* 極致深黑 */
     color: white;
-    padding: 80px 60px;
-    margin-top: 50px;
-    border-radius: 8px;
+    padding: 100px 80px;
+    margin-top: 100px;
+    border-radius: 0;
 }
 
 .footprint-container {
     display: flex;
-    gap: 60px;
-    align-items: center;
+    gap: 80px;
+    align-items: flex-start;
 }
 
-.stats-sidebar {
-    flex: 0 0 250px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
+.stats-sidebar { flex: 0 0 280px; }
 
 .stat-item {
-    border-left: 3px solid var(--accent-copper);
-    padding-left: 20px;
+    margin-bottom: 50px;
+    border-left: 4px solid var(--accent-copper);
+    padding-left: 25px;
 }
 
 .stat-num {
     display: block;
-    font-size: 3rem;
+    font-size: 4.5rem; /* 數據震撼化 */
     font-weight: 800;
-    font-family: 'Montserrat';
-    line-height: 1;
+    font-family: 'Montserrat', sans-serif;
     color: var(--accent-copper);
+    line-height: 1;
 }
 
 .stat-desc {
-    font-size: 0.85rem;
-    color: #999;
-    letter-spacing: 1px;
-}
-
-.footprint-content {
-    flex: 1;
-}
-
-.authority-badge {
-    display: inline-block;
-    background: var(--accent-copper);
-    color: white;
-    font-size: 0.6rem;
-    padding: 3px 10px;
+    font-size: 0.9rem;
+    color: #888;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.footprint-content { flex: 1; }
+
+.authority-badge {
+    background: var(--accent-copper);
+    color: white;
+    padding: 5px 15px;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    display: inline-block;
 }
 
 .footprint-content h4 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    font-family: 'Noto Serif TC';
+    font-size: 2.6rem;
+    margin-bottom: 35px;
+    font-family: 'Noto Serif TC', serif;
 }
 
 .footprint-content p {
-    color: #ccc;
-    line-height: 2;
-    font-size: 1.05rem;
+    color: #bbb;
+    font-size: 1.3rem;
+    line-height: 2.2;
+    text-align: justify;
 }
 
 .skill-tags {
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
-    gap: 15px;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 .skill-tags span {
     border: 1px solid #444;
-    padding: 5px 15px;
-    font-size: 0.75rem;
-    color: #999;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    color: #aaa;
+    background: rgba(255,255,255,0.03);
 }
 
-/* 響應式微調 */
-@media (max-width: 992px) {
-    .footprint-container { flex-direction: column; text-align: center; }
-    .stats-sidebar { flex-direction: row; justify-content: center; gap: 30px; width: 100%; }
-    .stat-item { border-left: none; border-top: 2px solid var(--accent-copper); padding: 15px 0 0 0; }
-}
+/* ==========================================================================
+   5. 響應式佈局 (Mobile Optimization)
+   ========================================================================== */
+@media (max-width: 1100px) {
+    .museum-grid { display: flex; flex-direction: column; }
+    .wide-exhibition { flex-direction: column; }
+    .footprint-container { flex-direction: column; gap: 60px; }
+    .stats-sidebar { display: flex; width: 100%; justify-content: space-
