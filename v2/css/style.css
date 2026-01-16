@@ -255,120 +255,148 @@ body.paper-white-bg {
 
 footer { text-align: center; padding: 60px; font-size: 0.7rem; color: #CCC; }
 /* ==========================================================================
-   P4: OUTREACH 終極修正 - 確保圖片 100% 完整顯示
+   P4: OUTREACH 修正版 - 權威感與比例優化
    ========================================================================== */
 
 .gallery-bg {
-    background-color: #fdfdfd;
+    background-color: #f4f4f4; /* 稍微深一點的灰色，讓白色卡片更跳脫 */
 }
 
+/* --- 特展卡片樣式 --- */
 .masonry-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-auto-rows: 450px; /* 將 300px 改為 450px，讓格位變高 */
+    grid-auto-rows: 300px;
     gap: 25px;
     margin-bottom: 80px;
 }
 
 .grid-item {
     position: relative;
-    background: #fff;
-    border: 1px solid #eee; /* 增加邊框讓美術館質感更好 */
-    display: flex;
-    flex-direction: column;
+    overflow: hidden;
+    background: #222;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* 移除 wide 在手機版可能造成的跑版 */
-.grid-item.wide {
-    grid-column: span 2;
-}
+.grid-item.tall { grid-row: span 2; } 
+.grid-item.wide { grid-column: span 2; }
 
-/* --- 核心修正：確保圖片不被裁切 --- */
+/* 確保主視覺照片填滿且不變形 */
 .main-visual {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top; /* 讓照片從頂部開始對齊，避免切到主視覺的文字標題 */
+    object-fit: cover; /* 關鍵：裁切並填滿容器 */
     opacity: 0.8;
     transition: 0.6s ease;
 }
-/* 強化下方文字遮罩的可讀性，避免背景太雜亂 */
-.card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 40px 30px 20px 30px; /* 增加漸層深度 */
-    z-index: 2;
-    background: linear-gradient(transparent, rgba(0,0,0,0.9)); /* 加深遮罩 */
-    color: white;
-}
 
-/* 重新設計文字遮罩，改為在圖片下方，不遮擋圖片內容 */
-.card-overlay {
-    padding: 20px 25px;
-    background: #fff; /* 背景改為白色，因為圖片已經完整顯示了 */
-    border-top: 1px solid #f0f0f0;
-}
-
-.card-overlay h4 {
-    margin: 5px 0;
-    font-size: 1.3rem;
-    color: #222;
-    font-family: 'Noto Serif TC', serif;
-}
-
-.card-overlay p {
-    font-size: 0.9rem;
-    color: #666;
-    margin: 5px 0;
-}
-
-.category-tag {
-    color: var(--accent-copper);
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-}
-
-/* 按鈕美化 */
-.view-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 8px 18px;
-    border: 1px solid #222;
-    color: #222 !important;
-    text-decoration: none;
-    font-size: 0.8rem;
-    transition: 0.3s;
-}
-
-.view-btn:hover {
-    background: #222;
-    color: #fff !important;
-}
-
-/* 保持影片比例 */
+/* --- YouTube 比例修正：維持 16:9 --- */
 .video-container {
     position: relative;
-    padding-top: 56.25%;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 比例 (9 / 16 = 0.5625) */
     background: #000;
 }
 
 .video-container iframe {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
-/* 講座足跡保持原樣 */
+/* --- 講座足跡：權威感強化設計 --- */
 .talks-footprint-premium {
-    background: #111;
+    background: #111; /* 極致深黑展現專業感 */
     color: white;
-    padding: 60px;
-    margin-top: 50px;
+    padding: 80px 60px;
+    margin-top: 60px;
+    border-radius: 0; /* 滿版設計感 */
+    position: relative;
 }
 
-@media (max-width: 768px) {
+.footprint-container {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.stats-sidebar {
+    flex: 0 0 200px;
+}
+
+.stat-item {
+    margin-bottom: 40px;
+    border-left: 4px solid var(--accent-copper);
+    padding-left: 20px;
+}
+
+.stat-num {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--accent-copper);
+    line-height: 1;
+}
+
+.stat-desc {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footprint-content {
+    flex: 1;
+}
+
+.authority-badge {
+    background: var(--accent-copper);
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
+.footprint-content h4 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+}
+
+.footprint-content p {
+    color: #bbb;
+    font-size: 1.1rem;
+    line-height: 2.2;
+    text-align: justify;
+}
+
+/* 技能標籤 */
+.skill-tags {
+    margin-top: 40px;
+    display: flex;
+    gap: 12px;
+}
+
+.skill-tags span {
+    border: 1px solid #444;
+    padding: 6px 18px;
+    font-size: 0.8rem;
+    color: #888;
+    background: rgba(255,255,255,0.05);
+}
+
+/* RWD 適應 */
+@media (max-width: 992px) {
+    .footprint-container { flex-direction: column; gap: 40px; }
+    .stats-sidebar { display: flex; width: 100%; justify-content: space-around; }
     .grid-item.wide { grid-column: span 1; }
-    .masonry-grid { grid-template-columns: 1fr; }
 }
