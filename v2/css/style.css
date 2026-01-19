@@ -73,116 +73,102 @@ body {
 }
 
 /* ==========================================================================
-   3. P4: OUTREACH 美術館不對稱網格系統 (優化縮小版)
+   P4: OUTREACH 優化版 (圖片縮小 + 影片輪播)
    ========================================================================== */
 .gallery-bg { background-color: var(--bg-gallery); }
 
-.curator-intro {
-    font-size: 1.2rem; /* 稍微縮小導言字體增加精緻感 */
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto 60px;
-    color: #444;
-    text-align: center;
-}
-
-/* 12 欄位錯落網格 */
-.museum-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 30px; /* 縮小間距 */
+/* 展覽圖片縮小 30% */
+.museum-grid-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
     margin-bottom: 80px;
 }
 
-.grid-card {
+.grid-card-mini {
+    width: 70%; /* 圖片縮小 30% */
     background: #fff;
     border: 1px solid #eee;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     overflow: hidden;
+    transition: 0.4s;
 }
 
-.grid-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-}
+.grid-card-mini:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
-/* 展覽圖片容器：強制保持比例且不超過視窗高度 */
-.card-media {
+.grid-card-mini .card-media img {
     width: 100%;
-    overflow: hidden;
-}
-
-.card-media img {
-    width: 100%;
-    height: 100%;
+    height: auto;
+    display: block;
     object-fit: cover;
-    transition: transform 0.6s ease;
 }
 
-/* 修正：縮小琥珀展佔比，從 7 欄縮為 6 欄，並限制高度 */
-.feature-exhibition {
-    grid-column: span 6; /* 縮小一半寬度 */
-}
-.feature-exhibition .card-media {
-    aspect-ratio: 4 / 3; /* 改為 4:3 比例，避免過長 */
+/* 影片輪播區塊樣式 */
+.video-carousel-section {
+    padding: 60px 0;
+    overflow: hidden;
 }
 
-/* 鯨掘展：從全寬 12 欄改為佔 10 欄並置中，增加閱讀舒適度 */
-.wide-exhibition {
-    grid-column: 2 / span 10; 
-    flex-direction: row;
-}
-.wide-exhibition .card-media { 
-    flex: 1.2; 
-    aspect-ratio: 16 / 9;
-}
-.wide-exhibition .card-content { flex: 1; }
-
-/* 影片方塊：維持平衡 */
-.video-item {
-    grid-column: span 6;
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* 網格文字優化 */
-.card-content { padding: 30px; } /* 縮小內距 */
-.card-content h4 {
-    font-size: 1.6rem; 
-    margin: 10px 0 15px 0;
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 600;
-}
-.card-content p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #666;
+.carousel-track-container {
+    width: 90%;
+    overflow: hidden;
 }
 
-.view-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 25px;
-    border: 1px solid #111;
-    color: #111 !important;
-    text-decoration: none;
-    font-size: 0.85rem;
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-out;
+    padding: 20px 0;
 }
 
-/* 影片容器 */
+.video-card {
+    min-width: calc(50% - 10px); /* 每次顯示兩部影片 */
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.carousel-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover { background: var(--accent-copper); }
+
 .video-container {
     position: relative;
-    padding-top: 56.25%;
+    padding-top: 56.25%; /* 16:9 */
     background: #000;
 }
+
 .video-container iframe {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
 }
 
-/* ==========================================================================
-   4. 講座足跡 (保持現有邏輯，僅優化字體大小與間距)
-   ========================================================================== */
+.video-info { padding: 20px; }
+.video-info h5 { margin: 0; font-size: 1.1rem; }
+.video-info p { margin: 5px 0 0; color: #777; font-size: 0.9rem; }
+
+/* 講座足跡保持原樣但微調間距 */
 .talks-footprint-premium {
     background: #111;
     color: white;
@@ -199,13 +185,7 @@ body {
 
 .stat-num { font-size: 3.5rem; color: var(--accent-copper); font-weight: 800; }
 
-/* ==========================================================================
-   5. 響應式佈局 (Mobile)
-   ========================================================================== */
-@media (max-width: 1024px) {
-    .feature-exhibition, .video-item, .wide-exhibition {
-        grid-column: span 12;
-    }
-    .wide-exhibition { flex-direction: column; }
-    .content-container { padding: 0 20px; }
+@media (max-width: 768px) {
+    .grid-card-mini { width: 100%; }
+    .video-card { min-width: 100%; } /* 手機版一次一部 */
 }
