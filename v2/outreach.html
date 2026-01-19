@@ -19,7 +19,7 @@
         </ul>
     </nav>
 
-   <main class="content-container">
+<main class="content-container">
     <header class="gallery-header">
         <h2 class="section-title">Outreach & Curation</h2>
         <p class="curator-intro">
@@ -27,9 +27,8 @@
         </p>
     </header>
 
-    <section class="museum-grid">
-        
-        <div class="grid-card feature-exhibition">
+    <section class="museum-grid-mini">
+        <div class="grid-card-mini">
             <div class="card-media">
                 <img src="./images/amber_main.jpg" alt="那一刻—琥珀的記憶">
             </div>
@@ -41,17 +40,7 @@
             </div>
         </div>
 
-        <div class="grid-card video-item">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/E3zMWV2y-do" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">
-                <h5>古生物學家的時空旅行</h5>
-                <p>大愛人文講堂 | 2022</p>
-            </div>
-        </div>
-
-        <div class="grid-card wide-exhibition">
+        <div class="grid-card-mini">
             <div class="card-media">
                 <img src="./images/whale_main.jpg" alt="鯨掘">
             </div>
@@ -62,7 +51,48 @@
                 <a href="https://web3.nmns.edu.tw/Exhibits/114/giant-unearthed/" target="_blank" class="view-btn">查看展覽詳情</a>
             </div>
         </div>
+    </section>
 
+    <section class="video-carousel-section">
+        <h3 class="gallery-sub-title"><i class="fa-solid fa-clapperboard"></i> Media & Scientific Communication</h3>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <div class="carousel-track-container">
+                <div class="carousel-track" id="videoTrack">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/mVvw7clDT-Q" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info"><h5>恐龍的崛起與消亡</h5><p>臺灣科學特殊人才提升計畫</p></div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/E3zMWV2y-do" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info"><h5>古生物學家的時空旅行</h5><p>大愛人文講堂</p></div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/VnnVSEfSv1c" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info"><h5>台北榮總重粒子中心開幕</h5><p>醫療科普合作</p></div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/mxaLU_PhkaM" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info"><h5>恐龍會得癌症嗎？</h5><p>PanSci 泛科學</p></div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/eQSY8jE9f_Q" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info"><h5>台灣無化石專法：專家觀點</h5><p>公視獨立特派員</p></div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
     </section>
 
     <section class="talks-footprint-premium">
@@ -88,6 +118,22 @@
         </div>
     </section>
 </main>
+
+<script>
+    let currentIdx = 0;
+    function moveSlide(direction) {
+        const track = document.getElementById('videoTrack');
+        const cards = document.querySelectorAll('.video-card');
+        const cardWidth = cards[0].offsetWidth + 20; // 寬度 + gap
+        const maxIdx = cards.length - 1;
+        
+        currentIdx += direction;
+        if (currentIdx < 0) currentIdx = 0;
+        if (currentIdx > maxIdx - 1) currentIdx = maxIdx - 1; // 每次顯示約兩部，調整索引邊界
+
+        track.style.transform = `translateX(-${currentIdx * cardWidth}px)`;
+    }
+</script>
 
     <footer>© 2024 DR. TZU-RUEI YANG. ALL RIGHTS RESERVED.</footer>
 
