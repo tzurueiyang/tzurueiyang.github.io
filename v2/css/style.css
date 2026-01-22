@@ -258,6 +258,170 @@ body {
     width: fit-content;
     text-align: center;
 }
+/* ==========================================================================
+   P2: RESEARCH & FIELDWORK 特殊樣式
+   ========================================================================== */
+
+/* 響應式地圖容器 */
+.map-wrapper {
+    max-width: 900px;
+    margin: 0 auto 50px;
+}
+
+.map-canvas {
+    position: relative;
+    width: 100%;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9; /* 固定比例，解決標記跑位問題 */
+}
+
+.map-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.map-pin {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--accent-copper);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.map-pin:hover { transform: scale(1.5); }
+
+/* 動態脈衝效果 */
+.pulse {
+    box-shadow: 0 0 0 rgba(211, 84, 0, 0.4);
+    animation: pulse-animation 2s infinite;
+}
+@keyframes pulse-animation {
+    0% { box-shadow: 0 0 0 0px rgba(211, 84, 0, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(211, 84, 0, 0); }
+    100% { box-shadow: 0 0 0 0px rgba(211, 84, 0, 0); }
+}
+
+.map-info-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    min-height: 80px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* 研究主題網格 */
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.theme-card {
+    background: white;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.theme-card:hover {
+    border-bottom-color: var(--accent-copper);
+    transform: translateY(-5px);
+}
+
+.theme-img-box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.theme-content { padding: 20px; }
+.theme-content h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--accent-copper); }
+.theme-content p { font-size: 0.9rem; line-height: 1.6; color: #666; }
+
+/* 時間軸設計 */
+.impact-timeline {
+    max-width: 800px;
+    margin: 40px auto;
+    border-left: 2px solid #eee;
+    padding-left: 30px;
+}
+
+.time-node {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.node-year {
+    font-family: 'Montserrat';
+    font-weight: 800;
+    color: var(--accent-copper);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.time-node::before {
+    content: '';
+    position: absolute;
+    left: -37px;
+    top: 10px;
+    width: 12px;
+    height: 12px;
+    background: var(--accent-copper);
+    border-radius: 50%;
+}
+
+/* 團隊區塊優化 */
+.people-container { margin-top: 50px; }
+.group-title {
+    font-family: 'Montserrat';
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #999;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.member-card {
+    background: #f9f9f9;
+    padding: 15px;
+    font-size: 0.9rem;
+    border-left: 3px solid #ddd;
+}
+
+.former-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* 響應式載具調整 */
+@media (max-width: 768px) {
+    .section-title { font-size: 2rem; }
+    .map-canvas { aspect-ratio: 4 / 3; }
+    .map-pin { width: 10px; height: 10px; }
+    .content-container { padding: 0 20px; margin: 40px auto; }
+}
 
 /* ==========================================================================
    P4: OUTREACH 優化版 (圖片縮小 + 影片輪播)
