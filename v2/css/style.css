@@ -731,193 +731,45 @@ body {
     .video-card { min-width: 100%; } /* 手機版一次一部 */
 }
 /* ==========================================================================
-   P5: CONNECT 完整優化版 (取代原本的 P5 段落)
+   P5: CONNECT 行動裝置優化版 (更換原本的 P5 樣式)
    ========================================================================== */
-
-/* 確保內容在視窗中央 */
 .contact-page-center {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 250px);
-    padding: 20px;
+    min-height: calc(100vh - 200px);
+    padding: 40px 20px;
 }
 
-/* 聯絡卡片主體 */
 .contact-card {
     background: #ffffff;
     width: 100%;
-    max-width: 600px;
-    padding: 60px;
+    max-width: 550px;
+    padding: 50px;
     position: relative;
     border: 1px solid var(--border-light);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
 }
 
-.contact-card:hover {
-    transform: translateY(-5px);
-}
-
-/* 卡片左上裝飾線：呼應 P1 風格 */
 .contact-card::before {
     content: "";
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -8px;
+    right: -8px;
     width: 100%;
     height: 100%;
     border: 1px solid var(--accent-copper);
     z-index: -1;
 }
 
-/* 卡片頭部 */
-.card-header {
-    text-align: center;
-    margin-bottom: 50px;
-    border-bottom: 1px solid #f0f0f0;
-    padding-bottom: 30px;
-}
-
-.contact-name {
-    font-size: 2.2rem;
-    margin: 15px 0 5px;
-    font-weight: 600;
-}
-
-.contact-name small {
-    display: block;
-    font-size: 1.1rem;
-    color: var(--accent-copper);
-    font-family: 'Montserrat';
-    letter-spacing: 1px;
-    margin-top: 5px;
-}
-
-.contact-title {
-    font-size: 0.9rem;
-    color: #888;
-    margin-top: 10px;
-}
-
-/* 聯絡項目清單 */
-.card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-}
-
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 25px;
-}
-
-.icon-box {
-    width: 45px;
-    height: 45px;
-    background: #fcfbf9;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--accent-copper);
-    font-size: 1.2rem;
-    border: 1px solid #eee;
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-info .label {
-    font-family: 'Montserrat';
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #bbb;
-    margin-bottom: 5px;
-}
-
-/* 郵件與電話連結樣式 */
-.contact-info .link {
-    color: var(--text-dark);
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: 0.3s;
-    position: relative;
-    display: inline-block;
-    width: fit-content;
-}
-
-.contact-info .link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--accent-copper);
-    transition: width 0.3s ease;
-}
-
-.contact-info .link:hover {
-    color: var(--accent-copper);
-}
-
-.contact-info .link:hover::after {
-    width: 100%;
-}
-
-.contact-info .text {
-    margin: 0;
-    font-size: 1rem;
-}
-
-/* 地圖連結優化版 */
-.map-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.85rem;
-    color: var(--accent-copper);
-    text-decoration: none;
-    margin-top: 10px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.map-link i {
-    font-size: 0.75rem;
-    transition: transform 0.3s ease;
-}
-
-.map-link:hover {
-    color: var(--text-dark);
-}
-
-.map-link:hover i {
-    transform: translate(2px, -2px); /* 箭頭往右上微動 */
-}
-
-/* 底部裝飾 */
-.card-footer-deco {
-    margin-top: 50px;
-    text-align: center;
-    font-family: 'Montserrat';
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    color: #ddd;
-    text-transform: uppercase;
-}
-
-/* RWD 調整 */
+/* 針對手機螢幕縮小卡片內距與字體，避免內容被擠扁 */
 @media (max-width: 600px) {
-    .contact-card { padding: 40px 25px; }
-    .contact-name { font-size: 1.8rem; }
-    .contact-item { gap: 15px; }
+    .contact-card {
+        padding: 30px 20px;
+        margin-top: 10px;
+    }
+    .contact-name { font-size: 1.6rem; }
+    .contact-item { gap: 12px; }
+    .icon-box { width: 35px; height: 35px; font-size: 0.9rem; }
+    .contact-info .link { font-size: 0.9rem; word-break: break-all; } /* 防止郵件過長溢出 */
 }
-
