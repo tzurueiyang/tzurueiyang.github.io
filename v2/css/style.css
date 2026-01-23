@@ -728,7 +728,7 @@ body {
     .video-card { min-width: 100%; } /* 手機版一次一部 */
 }
 /* ==========================================================================
-   P5: CONNECT 專屬樣式
+   P5: CONNECT 完整優化版 (取代原本的 P5 段落)
    ========================================================================== */
 
 /* 確保內容在視窗中央 */
@@ -756,7 +756,7 @@ body {
     transform: translateY(-5px);
 }
 
-/* 卡片裝飾線：模仿 P1 的設計語彙 */
+/* 卡片左上裝飾線：呼應 P1 風格 */
 .contact-card::before {
     content: "";
     position: absolute;
@@ -838,16 +838,35 @@ body {
     margin-bottom: 5px;
 }
 
+/* 郵件與電話連結樣式 */
 .contact-info .link {
     color: var(--text-dark);
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 600;
     transition: 0.3s;
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+}
+
+.contact-info .link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-copper);
+    transition: width 0.3s ease;
 }
 
 .contact-info .link:hover {
     color: var(--accent-copper);
+}
+
+.contact-info .link:hover::after {
+    width: 100%;
 }
 
 .contact-info .text {
@@ -855,19 +874,33 @@ body {
     font-size: 1rem;
 }
 
+/* 地圖連結優化版 */
 .map-link {
-    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
     color: var(--accent-copper);
     text-decoration: none;
-    margin-top: 8px;
+    margin-top: 10px;
     font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.map-link i {
+    font-size: 0.75rem;
+    transition: transform 0.3s ease;
 }
 
 .map-link:hover {
-    text-decoration: underline;
+    color: var(--text-dark);
 }
 
-/* 底部裝飾文字 */
+.map-link:hover i {
+    transform: translate(2px, -2px); /* 箭頭往右上微動 */
+}
+
+/* 底部裝飾 */
 .card-footer-deco {
     margin-top: 50px;
     text-align: center;
@@ -878,15 +911,9 @@ body {
     text-transform: uppercase;
 }
 
-/* RWD 響應式調整 */
+/* RWD 調整 */
 @media (max-width: 600px) {
-    .contact-card {
-        padding: 40px 25px;
-    }
-    .contact-name {
-        font-size: 1.8rem;
-    }
-    .contact-item {
-        gap: 15px;
-    }
+    .contact-card { padding: 40px 25px; }
+    .contact-name { font-size: 1.8rem; }
+    .contact-item { gap: 15px; }
 }
