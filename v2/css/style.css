@@ -233,7 +233,7 @@
 }
 
 /* ==========================================================================
-   2. 導覽列優化 (修正網頁版視窗縮小時看不到左右按鈕的問題)
+   2. 導覽列優化 (修正網頁版縮小時看不到連結的問題)
    ========================================================================== */
 .main-nav {
     background: #fff;
@@ -244,26 +244,32 @@
 }
 
 .nav-container {
-    max-width: 100%; /* 讓容器隨視窗伸縮 */
+    max-width: 100%;
     margin: 0 auto;
-    overflow-x: auto; /* 視窗縮小時允許滑動 */
+    overflow-x: auto; /* 當寬度不足時，允許橫向滑動 */
     scrollbar-width: none; /* Firefox 隱藏捲軸 */
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch; /* 手機滑動流暢感 */
 }
 
 .nav-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari 隱藏捲軸，保持美觀 */
+    display: none; /* Chrome/Safari 隱藏捲軸 */
 }
 
 .main-nav ul {
     display: flex;
-    /* 關鍵修正：內容預設居中，但當空間不夠時，會靠左對齊以便滑動查看 */
-    justify-content: safe center; 
+    justify-content: flex-start; /* 關鍵修正：預設靠左，確保縮小時連結可見且可滑動 */
     gap: 30px;
     list-style: none;
     margin: 0;
     padding: 15px 40px;
-    white-space: nowrap; /* 強制不換行 */
+    white-space: nowrap; /* 強制連結不換行 */
+}
+
+/* 額外增加：當螢幕夠寬時，才讓導覽選單置中 */
+@media (min-width: 900px) {
+    .main-nav ul {
+        justify-content: center;
+    }
 }
 
 .main-nav a {
@@ -277,15 +283,6 @@
 }
 
 .main-nav a.active { color: var(--accent-copper); }
-
-/* 手機版微調 */
-@media (max-width: 850px) {
-    .main-nav ul {
-        justify-content: flex-start; /* 手機版直接靠左開始滑動 */
-        padding: 15px 20px;
-        gap: 20px;
-    }
-}
 /* ==========================================================================
    P2: RESEARCH & FIELDWORK 特製樣式
    ========================================================================== */
