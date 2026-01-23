@@ -263,19 +263,19 @@ body {
    ========================================================================== */
 
 .map-wrapper {
-    max-width: 1000px; /* 配合新圖比例稍微調寬 */
+    max-width: 1000px;
     margin: 0 auto 50px;
 }
 
 .map-canvas {
     position: relative;
     width: 100%;
-    background: #f0f0f0;
-    border-radius: 8px;
+    background: #fcfbf9; /* 配合紙張背景色 */
+    border-radius: 4px;
     overflow: hidden;
-    /* 根據您提供的地圖底圖長寬比設定，確保容器與圖片完全重合 */
+    /* 核心：確保容器比例與底圖圖片比例一致，避免點位因圖片變形而跑位 */
     aspect-ratio: 1618 / 1000; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.08);
 }
 
 .map-bg {
@@ -287,25 +287,26 @@ body {
 
 .map-pin {
     position: absolute;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     background-color: var(--accent-copper);
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid #fff;
     z-index: 10;
-    /* 使用 transform 讓點的核心對準百分比座標 */
+    /* 核心：將點的核心(Center)對準座標百分比 */
     transform: translate(-50%, -50%);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .map-pin:hover {
-    transform: translate(-50%, -50%) scale(1.8);
-    background-color: #ff6600;
+    transform: translate(-50%, -50%) scale(1.6);
+    background-color: #111; /* 懸停變色增加交互感 */
+    box-shadow: 0 0 15px rgba(211, 84, 0, 0.5);
     z-index: 20;
 }
 
-/* 脈衝動畫優化 */
+/* 脈衝動畫 - 點位更醒目 */
 .pulse::after {
     content: '';
     position: absolute;
@@ -316,20 +317,35 @@ body {
     background: var(--accent-copper);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    animation: pulse-animation 2s infinite;
+    animation: pulse-animation 2.5s infinite;
     z-index: -1;
 }
 
 @keyframes pulse-animation {
     0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-    100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
 }
 
-/* 手機版適應：地圖標記變大一點方便點擊 */
+/* 資訊盒樣式優化 */
+.map-info-box {
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #eee;
+    min-height: 80px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* 手機版適應：地圖標記適度放大 */
 @media (max-width: 768px) {
     .map-pin {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
+    }
+    .map-canvas {
+        aspect-ratio: auto; /* 手機端允許高度自適應 */
     }
 }
 
