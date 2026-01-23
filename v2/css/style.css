@@ -212,7 +212,7 @@ body {
 }
 
 /* ==========================================================================
-   2. 導覽列優化 (修正手機版看不到按鈕、排版死板問題)
+   2. 導覽列優化 (修正網頁版視窗縮小時看不到左右按鈕的問題)
    ========================================================================== */
 .main-nav {
     background: #fff;
@@ -223,22 +223,26 @@ body {
 }
 
 .nav-container {
-    max-width: 1400px;
+    max-width: 100%; /* 讓容器隨視窗伸縮 */
     margin: 0 auto;
-    /* 關鍵：手機版如果排不下，允許左右滑動，不會切斷按鈕 */
-    overflow-x: auto; 
+    overflow-x: auto; /* 視窗縮小時允許滑動 */
+    scrollbar-width: none; /* Firefox 隱藏捲軸 */
     -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari 隱藏捲軸，保持美觀 */
 }
 
 .main-nav ul {
     display: flex;
-    justify-content: center;
+    /* 關鍵修正：內容預設居中，但當空間不夠時，會靠左對齊以便滑動查看 */
+    justify-content: safe center; 
     gap: 30px;
     list-style: none;
     margin: 0;
     padding: 15px 40px;
-    /* 關鍵：強制不換行，維持專業感 */
-    white-space: nowrap; 
+    white-space: nowrap; /* 強制不換行 */
 }
 
 .main-nav a {
@@ -256,7 +260,7 @@ body {
 /* 手機版微調 */
 @media (max-width: 850px) {
     .main-nav ul {
-        justify-content: flex-start; /* 手機版改靠左滑動 */
+        justify-content: flex-start; /* 手機版直接靠左開始滑動 */
         padding: 15px 20px;
         gap: 20px;
     }
@@ -731,45 +735,62 @@ body {
     .video-card { min-width: 100%; } /* 手機版一次一部 */
 }
 /* ==========================================================================
-   P5: CONNECT 行動裝置優化版 (更換原本的 P5 樣式)
+   P5: CONNECT 內容排版優化
    ========================================================================== */
 .contact-page-center {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 200px);
-    padding: 40px 20px;
+    min-height: calc(100vh - 150px);
+    padding: 60px 20px;
 }
 
 .contact-card {
     background: #ffffff;
     width: 100%;
     max-width: 550px;
-    padding: 50px;
+    padding: 60px;
     position: relative;
     border: 1px solid var(--border-light);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.05);
 }
 
 .contact-card::before {
     content: "";
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -10px;
+    right: -10px;
     width: 100%;
     height: 100%;
     border: 1px solid var(--accent-copper);
     z-index: -1;
 }
 
-/* 針對手機螢幕縮小卡片內距與字體，避免內容被擠扁 */
+.card-header { margin-bottom: 40px; text-align: left; }
+.contact-name { font-size: 2.2rem; margin: 10px 0; color: var(--text-dark); }
+.contact-name small { font-size: 1.1rem; color: #888; font-weight: 400; display: block; }
+.contact-title { font-size: 0.95rem; color: #666; margin: 0; }
+
+.card-body { display: flex; flex-direction: column; gap: 30px; }
+.contact-item { display: flex; align-items: flex-start; gap: 20px; }
+.icon-box { 
+    width: 45px; height: 45px; 
+    background: #fdfaf7; color: var(--accent-copper);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; font-size: 1.1rem;
+}
+
+.contact-info .label { display: block; font-size: 0.7rem; font-family: 'Montserrat'; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
+.contact-info .link, .contact-info .text { font-size: 1rem; color: var(--text-dark); text-decoration: none; margin: 5px 0 0; }
+.map-link { font-size: 0.85rem; color: var(--accent-copper); text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block; }
+
+.card-footer-deco { margin-top: 50px; padding-top: 30px; border-top: 1px solid #f0f0f0; text-align: center; }
+.card-footer-deco p { font-family: 'Montserrat'; font-size: 0.75rem; color: #bbb; letter-spacing: 1px; }
+
+/* 針對小視窗與手機的最終微調 */
 @media (max-width: 600px) {
-    .contact-card {
-        padding: 30px 20px;
-        margin-top: 10px;
-    }
-    .contact-name { font-size: 1.6rem; }
-    .contact-item { gap: 12px; }
-    .icon-box { width: 35px; height: 35px; font-size: 0.9rem; }
-    .contact-info .link { font-size: 0.9rem; word-break: break-all; } /* 防止郵件過長溢出 */
+    .contact-card { padding: 40px 25px; }
+    .contact-name { font-size: 1.8rem; }
+    .contact-item { gap: 15px; }
 }
