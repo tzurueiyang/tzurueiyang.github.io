@@ -165,50 +165,71 @@
 }
 
 /* ==========================================================================
-   響應式調整 (RWD)
+   P1: PROFILE 響應式優化 (修正手機版位置與比例)
    ========================================================================== */
 
-/* 平板尺寸 */
+/* 平板尺寸 (1024px 以下) */
 @media (max-width: 1024px) {
     .profile-wrapper {
-        flex-direction: column;
-        gap: 60px;
-        padding: 40px;
+        flex-direction: column; /* 照片與文字改為上下排列 */
+        gap: 40px;
+        padding: 40px 20px;
         text-align: center;
+        margin: 20px auto;
     }
     
-    .photo-column { justify-content: center; }
-    .bio-text { border-left: none; padding-left: 0; }
-    .impact-row { flex-wrap: wrap; }
+    .photo-column { 
+        justify-content: center; 
+        width: 100%;
+    }
+
+    .photo-box {
+        max-width: 320px; /* 手機版照片縮小，避免佔滿全螢幕 */
+    }
+
+    .info-column {
+        width: 100%;
+        padding: 0;
+    }
+
+    .bio-text { 
+        border-left: none; 
+        border-top: 2px solid var(--accent-copper); /* 裝飾線改到文字上方 */
+        padding-left: 0; 
+        padding-top: 25px;
+        text-align: left; /* 文字維持靠左方便閱讀 */
+    }
+
+    .impact-row { 
+        justify-content: center;
+        flex-wrap: wrap; 
+    }
 }
 
-/* 手機尺寸 */
+/* 手機尺寸 (600px 以下) */
 @media (max-width: 600px) {
-    .name-block h1 { font-size: 2.5rem; }
-    .impact-row { flex-direction: column; }
-    .profile-wrapper { padding: 20px; }
-    .main-nav ul { gap: 15px; }
-    .main-nav a { font-size: 0.7rem; letter-spacing: 1px; }
-}
+    .name-block h1 { 
+        font-size: 2.2rem; /* 名字縮小，避免在窄螢幕上斷行過多 */
+    }
 
-footer {
-    text-align: center;
-    padding: 40px 0;
-    font-family: 'Montserrat';
-    font-size: 0.75rem;
-    color: #bbb;
-    letter-spacing: 1px;
-}
+    .sub-name {
+        font-size: 1rem;
+    }
+    
+    .impact-row { 
+        flex-direction: column; /* 三個卡片改為垂直排列 */
+        gap: 15px;
+    }
 
-* { box-sizing: border-box; }
+    .profile-wrapper { 
+        padding: 20px; 
+    }
 
-body {
-    background-color: var(--bg-white);
-    color: var(--text-dark);
-    font-family: 'Noto Serif TC', serif;
-    font-size: var(--base-font-size);
-    margin: 0;
-    line-height: 1.8;
+    /* 確保 P1 導覽列在手機版也維持一致的間距與字體 */
+    .main-nav a { 
+        font-size: 0.75rem; 
+        letter-spacing: 1px; 
+    }
 }
 
 /* ==========================================================================
