@@ -422,6 +422,180 @@ body {
     .map-pin { width: 10px; height: 10px; }
     .content-container { padding: 0 20px; margin: 40px auto; }
 }
+/* ==========================================================================
+   P3: PUBLICATIONS 樣式優化
+   ========================================================================== */
+
+/* 重點推薦網格 */
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 80px;
+}
+
+.highlight-item {
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    transform: translateY(-5px);
+}
+
+.pub-badge {
+    font-family: 'Montserrat';
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--accent-copper);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-copper);
+    display: inline-block;
+}
+
+.pub-citation {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+/* 學術服務區塊 */
+.service-bg {
+    background: #f9f8f6;
+    padding: 60px 40px;
+    margin: 0 -40px 80px -40px;
+}
+
+.service-flex {
+    display: flex;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.service-box { flex: 1; }
+.service-type {
+    font-family: 'Montserrat';
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.editorial-list {
+    list-style: none;
+    padding: 0;
+}
+
+.editorial-list li {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    border-left: 2px solid var(--accent-copper);
+}
+
+.reviewer-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.reviewer-cloud span {
+    background: #fff;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    color: #777;
+    border: 1px solid #eee;
+}
+
+/* 文獻清單樣式 */
+.bib-list {
+    list-style: none;
+    padding: 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bib-entry {
+    display: flex;
+    gap: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    align-items: flex-start;
+}
+
+.bib-year {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    color: #bbb;
+    min-width: 50px;
+}
+
+.bib-content {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* 展開動畫 */
+.bib-drawer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.bib-drawer.active {
+    max-height: 2000px; /* 設一個足夠大的高度 */
+}
+
+.expand-btn {
+    display: block;
+    margin: 40px auto;
+    background: none;
+    border: 1px solid #ddd;
+    padding: 12px 30px;
+    font-family: 'Montserrat';
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.expand-btn:hover {
+    background: var(--text-dark);
+    color: #fff;
+}
+
+/* 數據卡片 */
+.metrics-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.metric-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 20px 40px;
+    text-align: center;
+}
+
+.metric-label { font-family: 'Montserrat'; display: block; font-size: 0.7rem; color: #999; }
+.metric-val { font-size: 1.1rem; font-weight: 600; margin: 10px 0; display: block; }
+.metric-link { font-size: 0.75rem; text-decoration: none; color: var(--accent-copper); font-weight: 700; }
+
+/* 響應式載具 */
+@media (max-width: 768px) {
+    .service-flex { flex-direction: column; }
+    .bib-entry { flex-direction: column; gap: 5px; }
+    .bib-year { font-size: 1.2rem; }
+    .metrics-container { flex-direction: column; }
+    .service-bg { padding: 40px 20px; margin: 0 -20px 60px -20px; }
+}
 
 /* ==========================================================================
    P4: OUTREACH 優化版 (圖片縮小 + 影片輪播)
