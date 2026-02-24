@@ -377,38 +377,40 @@
     transition: 0.3s;
 }
 
-/* --- 修改處：強化可點擊成員的視覺標示 --- */
+/* --- 修改處：精確區分 15 位有資料者與其他學生的視覺導引 --- */
 .member-card {
-    background: #f9f9f9;
-    padding: 18px;
-    border-left: 4px solid #ddd;
+    background: #fcfcfc;
+    padding: 16px;
+    border-left: 4px solid #eee; /* 預設：無資料的人呈現淡灰色邊框 */
     font-size: 0.95rem;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #888; /* 預設顏色較淡 */
+    color: #999; /* 預設：姓名顏色較淡 */
+    cursor: default; /* 預設：不可點擊 */
 }
 
-/* 僅針對有學經歷的人員加強顏色與互動 */
+/* 針對有學經歷的 15 人：啟用滑鼠手勢與深色文字 */
 .member-card.clickable {
     cursor: pointer;
-    border-left-color: #bbb;
-    color: var(--text-dark); /* 有資料的人名字顏色較深 */
+    border-left-color: #ccc;
+    color: var(--text-dark);
 }
 
+/* 針對有學經歷的 15 人：懸停時的動態效果與橘色邊框 */
 .member-card.clickable:hover {
     border-left-color: var(--accent-copper);
     background: #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transform: translateX(3px);
 }
 
-/* 橘色 i 圖示：明確指示「可點擊」 */
+/* 橘色 i 圖示：僅在可點擊的卡片中明顯顯示 */
 .info-icon {
     color: var(--accent-copper);
-    font-size: 0.85rem;
-    opacity: 0.6;
+    font-size: 0.8rem;
+    opacity: 0.5;
     transition: 0.3s;
 }
 
@@ -417,11 +419,12 @@
     transform: scale(1.2);
 }
 
-/* 校友標籤的特別樣式 */
+/* 校友標籤 (Former Members) 的點擊標示 */
 .clickable-tag {
     cursor: pointer !important;
     border: 1px solid var(--accent-copper) !important;
     background: #fffaf5 !important;
+    color: var(--text-dark) !important;
 }
 
 /* 彈窗樣式 (Modal) */
