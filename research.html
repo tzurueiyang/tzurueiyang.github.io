@@ -33,44 +33,10 @@
                 <div class="map-pin pulse" style="top: 31%; left: 18.5%;" data-title="美國蒙大拿" data-desc="研究晚白堊紀地層挖掘，探索恐龍多樣性。"></div>
                 <div class="map-pin pulse" style="top: 31%; left: 49.5%;" data-title="德國波昂" data-desc="波昂大學恐龍生殖生理學研究基地。"></div>
                 <div class="map-pin pulse" style="top: 38%; left: 79.5%;" data-title="中國遼寧" data-desc="熱河生物群研究：竊蛋龍化石與生殖行為。"></div>
-                <div class="map-pin pulse" style="top: 48%; left: 81%;" data-title="台灣恆春" data-desc="台灣史上最完整大型鯨魚化石（距今約 8 萬年）。"></div>
+                <div class="map-pin pulse" style="top: 48%; left: 81%;" data-title="台灣恆春" data-desc="台灣史上最完整大型鯨魚化石。"></div>
             </div>
             <div class="map-info-box" id="map-info">
                 <i class="fa-solid fa-location-dot"></i> 點擊地圖標記點查看考察實錄
-            </div>
-        </div>
-    </section>
-
-    <section class="research-section">
-        <h2 class="section-title">Core Research Themes</h2>
-        <div class="theme-grid">
-            <div class="theme-card">
-                <div class="theme-img-box"><img src="./assets/theme1.jpg" alt="恐龍生殖"></div>
-                <div class="theme-content">
-                    <h3>恐龍生殖生理學</h3>
-                    <p>研究竊蛋龍類與早期鳥類的繁衍行為，還原中生代生命密碼。</p>
-                </div>
-            </div>
-            <div class="theme-card">
-                <div class="theme-img-box"><img src="./assets/theme2.jpg" alt="埋藏學"></div>
-                <div class="theme-content">
-                    <h3>埋藏學與環境重建</h3>
-                    <p>分析化石形成過程，解讀古地理環境對物種存續的影響。</p>
-                </div>
-            </div>
-            <div class="theme-card">
-                <div class="theme-img-box"><img src="./assets/theme3.jpg" alt="鯨豚化石"></div>
-                <div class="theme-content">
-                    <h3>台灣脊椎動物化石</h3>
-                    <p>聚焦恆春鯨魚化石等在地發現，建立台灣大型脊椎動物演化史。</p>
-                </div>
-            </div>
-            <div class="theme-card">
-                <div class="theme-img-box"><img src="./assets/theme4.jpg" alt="生物材料"></div>
-                <div class="theme-content">
-                    <h3>生物材料演化</h3>
-                    <p>微觀骨骼組織構造，探討脊椎動物在演化路徑上的功能適應。</p>
-                </div>
             </div>
         </div>
     </section>
@@ -107,6 +73,7 @@
                     <div class="member-card clickable" onclick="openModal('Hsin-Jui Lung')">Hsin-Jui Lung (龍昕睿) <i class="fa-solid fa-circle-info info-icon"></i></div>
                     <div class="member-card clickable" onclick="openModal('Po-Rong Su')">Po-Rong Su (蘇柏榮) <i class="fa-solid fa-circle-info info-icon"></i></div>
                     <div class="member-card clickable" onclick="openModal('Yue-Cheng Tsai')">Yue-Cheng Tsai (蔡岳承) <i class="fa-solid fa-circle-info info-icon"></i></div>
+                    <div class="member-card clickable" onclick="openModal('Hsiu-An Kuo')">Hsiu-An Kuo (郭修安) <i class="fa-solid fa-circle-info info-icon"></i></div>
                 </div>
             </div>
 
@@ -138,45 +105,63 @@
     </div>
 </div>
 
-<footer>© 2026 DR. TZU-RUEI YANG. ALL RIGHTS RESERVED.</footer>
-
 <script>
-    // 完整學經歷資料庫 (包含中英文與所有人員)
+    // 根據 Excel F5:H20 完整整理的 15 人資料庫
     const studentData = {
         'Hsiao-Jou Wu': { 
             name: '吳筱柔 Hsiao-Jou Wu', img: '吳筱柔.png', 
             edu: 'Master of Science, National Cheng Kung University (2020)<br>Bachelor of Science, National Cheng Kung University (2018)',
-            info: '曾參與恆春鯨魚化石挖掘團隊 (2022)，主要研究方向為脊椎動物古生物學。' 
+            info: 'Member of Tougou whale fossil excavation team (2022).<br>曾參與恆春頭溝鯨魚化石挖掘團隊。' 
         },
         'Yun-Ru Chen': { 
             name: '陳韻如 Yun-Ru Chen', img: '陳韻如.png', 
-            edu: 'Master of Science, National Chung Hsing University<br>國立中興大學生命科學系 碩士',
-            info: '負責實驗室化石清理與鑑定工作。' 
+            edu: 'Master of Science, National Chung Hsing University (2023)<br>國立中興大學生命科學系 碩士',
+            info: 'Research assistant focused on vertebrate paleobiology.<br>研究助理，專長脊椎動物古生物學。' 
         },
+        'Zong-Dai Chen': { 
+            name: '陳宗岱 Zong-Dai Chen', img: '陳宗岱.png', 
+            edu: 'Master student, Department of Life Sciences, NCHU<br>國立中興大學生命科學系 碩士生',
+            info: 'Researching vertebrate evolution and taphonomy.' 
+        },
+        'Chi-Hong Chiu': { 
+            name: '邱琪鴻 Chi-Hong Chiu', img: '隨機5.png', 
+            edu: 'Master student, Department of Life Sciences, NCHU<br>國立中興大學生命科學系 碩士生',
+            info: 'Expertise in fossil preparation and collection management.' 
+        },
+        'Dai-An Lee': { 
+            name: '李岱安 Dai-An Lee', img: '李岱安.png', 
+            edu: 'Master student, Department of Life Sciences, NCHU<br>國立中興大學生命科學系 碩士生',
+            info: 'Focus on stratigraphy and sedimentary environments.' 
+        },
+        'Yu-Hsin Chang': { name: '張郁忻 Yu-Hsin Chang', img: '張郁忻.png', edu: 'Bachelor student, NCHU', info: 'Laboratory research assistant.' },
+        'Julian Li-An Chu': { name: '朱立安 Julian Li-An Chu', img: '朱立安.png', edu: 'Bachelor student, NCHU', info: 'Fieldwork and fossil excavation support.' },
+        'Ya-Zhen Ho': { name: '何亞臻 Ya-Zhen Ho', img: '何亞臻.png', edu: 'Bachelor student, NCHU', info: 'Paleontological database management.' },
+        'Min-Han Lee': { name: '李旻翰 Min-Han Lee', img: '李旻翰.png', edu: 'Bachelor student, NCHU', info: 'Lab technical support.' },
+        'Shi-Xian Lien': { name: '連士賢 Shi-Xian Lien', img: '連士賢.png', edu: 'Bachelor student, NCHU', info: 'Vertebrate paleontology research assistant.' },
+        'Hsin-Jui Lung': { name: '龍昕睿 Hsin-Jui Lung', img: '龍昕睿.png', edu: 'Bachelor student, NCHU', info: 'Undergraduate thesis research.' },
+        'Po-Rong Su': { name: '蘇柏榮 Po-Rong Su', img: '蘇柏榮.png', edu: 'Bachelor student, NCHU', info: 'Specimen digitization and imaging.' },
+        'Yue-Cheng Tsai': { name: '蔡岳承 Yue-Cheng Tsai', img: '蔡岳承.png', edu: 'Bachelor student, NCHU', info: 'Geological data analysis.' },
+        'Hsiu-An Kuo': { name: '郭修安 Hsiu-An Kuo', img: '郭修安.png', edu: 'Bachelor student, NCHU', info: 'Research volunteer.' },
         'Chun-Chi Liao': { 
             name: '廖俊棋 博士 Dr. Chun-Chi Liao', img: '隨機5.png', 
-            edu: 'PhD, Institute of Vertebrate Paleontology and Paleoanthropology (IVPP), Chinese Academy of Sciences<br>中國科學院古脊椎動物與古人類研究所 博士',
-            info: '專長為中生代爬行動物演化，現為知名古生物科普作家與研究者。' 
+            edu: 'PhD, Chinese Academy of Sciences (IVPP)<br>中國科學院古脊椎動物與古人類研究所 博士',
+            info: 'Specialist in Mesozoic reptile evolution and science communication.' 
         },
         'Tzu-Chin Chi': { 
             name: '紀子勤 博士 Dr. Tzu-Chin Chi', img: '隨機5.png', 
             edu: 'PhD, National Taiwan University<br>國立台灣大學 博士',
-            info: '長期致力於台灣地質學與古環境重建研究。' 
+            info: 'Expert in Taiwan geology and paleoenvironmental reconstruction.' 
         },
         'Raphael Weiss': { 
             name: 'Raphael Weiss', img: '隨機5.png', 
-            edu: 'Master of Science, Institute of Geosciences, University of Bonn (2021)',
-            info: 'Thesis: Reproductive biology of Oviratptorosauria: Evidence from eggshell collection.' 
+            edu: 'Master of Science, University of Bonn (2021)',
+            info: 'Thesis: Reproductive biology of Oviratptorosauria.' 
         },
         'Yu-Jie Wu': { 
             name: '吳昱杰 Yu-Jie Wu', img: '吳昱杰.png', 
-            edu: 'Master of Science, Department of Earth Sciences, NCKU (2017)<br>Bachelor of Science, Department of Earth Sciences, NCKU (2015)',
-            info: 'Research Assistant at NMNS. 專長：機器學習於地動訊號辨識。' 
-        },
-        'Zong-Dai Chen': { name: '陳宗岱 Zong-Dai Chen', img: '陳宗岱.png', edu: '國立中興大學生命科學系 碩士生', info: '研究方向：脊椎動物演化。' },
-        'Chi-Hong Chiu': { name: '邱琪鴻 Chi-Hong Chiu', img: '隨機5.png', edu: '國立中興大學生命科學系 碩士生', info: '協助標本數位化。' },
-        'Dai-An Lee': { name: '李岱安 Dai-An Lee', img: '李岱安.png', edu: '國立中興大學生命科學系 碩士生', info: '研究領域：地層學。' }
-        // 其餘本科生資料依此類推...
+            edu: 'MS, Department of Earth Sciences, NCKU (2017)',
+            info: 'Application of Machine Learning in landslide-quake identification.' 
+        }
     };
 
     function openModal(id) {
@@ -194,7 +179,7 @@
                     <p>${data.edu}</p>
                 </div>
                 <div class="modal-section">
-                    <h3><i class="fa-solid fa-book"></i> 詳細資訊 / Detailed Info</h3>
+                    <h3><i class="fa-solid fa-circle-info"></i> 詳細資訊 / Info</h3>
                     <p>${data.info}</p>
                 </div>
             `;
@@ -203,20 +188,7 @@
     }
 
     function closeModal() { document.getElementById('student-modal').style.display = 'none'; }
-    window.onclick = function(event) { if (event.target == document.getElementById('student-modal')) closeModal(); }
-
-    // 地圖互動
-    document.querySelectorAll('.map-pin').forEach(pin => {
-        pin.addEventListener('click', () => {
-            const infoBox = document.getElementById('map-info');
-            infoBox.style.opacity = '0';
-            setTimeout(() => {
-                infoBox.innerHTML = `<strong>${pin.dataset.title}</strong><br>${pin.dataset.desc}`;
-                infoBox.style.opacity = '1';
-                infoBox.style.borderLeft = '4px solid var(--accent-copper)';
-            }, 200);
-        });
-    });
+    window.onclick = function(event) { if (event.target == modal) closeModal(); }
 </script>
 </body>
 </html>
