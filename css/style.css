@@ -1,0 +1,814 @@
+/* ==========================================================================
+   1. 基礎設定與核心變數 (Dr. Yang 品牌色與大字體)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;600&family=Montserrat:wght@400;700;800&display=swap');
+
+:root {
+    --bg-white: #FFFFFF;
+    --bg-paper: #fcfbf9;      
+    --bg-gallery: #fdfdfd;   /* 美術館純淨白 */
+    --text-dark: #222222;
+    --accent-copper: #D35400; /* 氧化銅橘 */
+    --border-light: #F0F0F0;
+    --base-font-size: 18px;   /* 全局字體增大 */
+}
+/* ==========================================================================
+   P1: PROFILE 佈局重構 (Responsive Design)
+   ========================================================================== */
+
+.profile-page {
+    background-color: var(--bg-paper);
+    overflow-x: hidden;
+}
+
+.profile-wrapper {
+    display: flex;
+    min-height: calc(100vh - 120px); /* 扣除 nav 與 footer */
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 40px;
+    align-items: center;
+    gap: 80px;
+}
+
+/* 左側照片區設計 */
+.photo-column {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.photo-box {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    z-index: 2;
+    transition: transform 0.5s ease;
+}
+
+.photo-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(20%);
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+}
+
+/* 裝飾外框增加設計感 */
+.photo-frame {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent-copper);
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.photo-box:hover {
+    transform: translate(-10px, -10px);
+}
+
+.photo-box:hover .photo-frame {
+    transform: translate(20px, 20px);
+    background-color: rgba(211, 84, 0, 0.05);
+}
+
+/* 右側文字資訊區 */
+.info-column {
+    flex: 1.2;
+    padding: 20px 0;
+}
+
+.name-block h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin: 10px 0;
+    color: var(--text-dark);
+}
+
+.sub-name {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #888;
+    font-family: 'Montserrat';
+    margin-top: 5px;
+}
+
+.en-name {
+    color: var(--accent-copper);
+    font-family: 'Montserrat';
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.tagline {
+    font-family: 'Montserrat';
+    letter-spacing: 5px;
+    color: #bbb;
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
+
+.bio-text {
+    margin: 40px 0;
+    font-size: 1.15rem;
+    border-left: 2px solid #eee;
+    padding-left: 30px;
+    text-align: justify;
+}
+
+/* 影響力卡片設計 */
+.impact-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.impact-card {
+    flex: 1;
+    background: #fff;
+    padding: 25px 20px;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.card-icon {
+    font-size: 1.5rem;
+    color: var(--accent-copper);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.impact-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.impact-card p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0;
+}
+
+.impact-card:hover {
+    border-color: var(--accent-copper);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* ==========================================================================
+   P1: PROFILE 響應式優化 (修正手機版位置與比例)
+   ========================================================================== */
+
+/* 平板尺寸 (1024px 以下) */
+@media (max-width: 1024px) {
+    .profile-wrapper {
+        flex-direction: column; /* 照片與文字改為上下排列 */
+        gap: 40px;
+        padding: 40px 20px;
+        text-align: center;
+        margin: 20px auto;
+    }
+    
+    .photo-column { 
+        justify-content: center; 
+        width: 100%;
+    }
+
+    .photo-box {
+        max-width: 320px; /* 手機版照片縮小，避免佔滿全螢幕 */
+    }
+
+    .info-column {
+        width: 100%;
+        padding: 0;
+    }
+
+    .bio-text { 
+        border-left: none; 
+        border-top: 2px solid var(--accent-copper); /* 裝飾線改到文字上方 */
+        padding-left: 0; 
+        padding-top: 25px;
+        text-align: left; /* 文字維持靠左方便閱讀 */
+    }
+
+    .impact-row { 
+        justify-content: center;
+        flex-wrap: wrap; 
+    }
+}
+
+/* 手機尺寸 (600px 以下) */
+@media (max-width: 600px) {
+    .name-block h1 { 
+        font-size: 2.2rem; /* 名字縮小，避免在窄螢幕上斷行過多 */
+    }
+
+    .sub-name {
+        font-size: 1rem;
+    }
+    
+    .impact-row { 
+        flex-direction: column; /* 三個卡片改為垂直排列 */
+        gap: 15px;
+    }
+
+    .profile-wrapper { 
+        padding: 20px; 
+    }
+
+    /* 確保 P1 導覽列在手機版也維持一致的間距與字體 */
+    .main-nav a { 
+        font-size: 0.75rem; 
+        letter-spacing: 1px; 
+    }
+}
+
+/* ==========================================================================
+   2. 導覽列優化 (修正網頁版縮小時看不到連結的問題)
+   ========================================================================== */
+.main-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: auto; /* 當寬度不足時，允許橫向滑動 */
+    scrollbar-width: none; /* Firefox 隱藏捲軸 */
+    -webkit-overflow-scrolling: touch; /* 手機滑動流暢感 */
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari 隱藏捲軸 */
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: flex-start; /* 關鍵修正：預設靠左，確保縮小時連結可見且可滑動 */
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 15px 40px;
+    white-space: nowrap; /* 強制連結不換行 */
+}
+
+/* 額外增加：當螢幕夠寬時，才讓導覽選單置中 */
+@media (min-width: 900px) {
+    .main-nav ul {
+        justify-content: center;
+    }
+}
+
+.main-nav a {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+}
+
+.main-nav a.active { color: var(--accent-copper); }
+/* ==========================================================================
+   P2: RESEARCH & FIELDWORK 特製樣式
+   ========================================================================== */
+
+/* 地圖容器固定比例，確保點位精準 */
+.map-wrapper {
+    max-width: 1000px;
+    margin: 0 auto 50px;
+}
+
+.map-canvas {
+    position: relative;
+    width: 100%;
+    background: #fcfbf9;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 1618 / 1000; 
+    box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+}
+
+.map-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* 地圖圖釘與交互效果 */
+.map-pin {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: var(--accent-copper);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.map-pin:hover {
+    transform: translate(-50%, -50%) scale(1.6);
+    background-color: #111;
+    box-shadow: 0 0 15px rgba(211, 84, 0, 0.5);
+    z-index: 20;
+}
+
+/* 脈衝動畫 */
+.pulse::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-copper);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-animation 2.5s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse-animation {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+}
+
+/* 資訊盒樣式 */
+.map-info-box {
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #eee;
+    min-height: 80px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* 研究主題與團隊卡片優化 */
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.theme-card {
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.theme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.member-card {
+    background: #f9f9f9;
+    padding: 18px;
+    border-left: 4px solid #ddd;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.member-card:hover {
+    border-left-color: var(--accent-copper);
+    background: #fff;
+}
+
+/* RWD 適應 */
+@media (max-width: 768px) {
+    .map-canvas {
+        aspect-ratio: auto;
+        height: 350px;
+    }
+}
+/* ==========================================================================
+   Former Members 專屬優化樣式 (置換此處)
+   ========================================================================== */
+
+.former-section {
+    margin-top: 80px; /* 增加間距 */
+    padding-top: 40px;
+    border-top: 1px dashed #ddd; 
+}
+
+.former-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start;
+    margin-top: 25px;
+}
+
+.member-tag {
+    background-color: #f8f8f8;
+    color: #666;
+    padding: 8px 22px;
+    border-radius: 50px; /* 膠囊形狀 */
+    font-size: 0.85rem;
+    font-family: 'Montserrat', 'Noto Serif TC', sans-serif;
+    border: 1px solid #eee;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: default;
+    display: inline-block;
+}
+
+/* 針對博士成員：增加視覺重量感 */
+.member-tag.dr {
+    border: 1px solid #d1d1d1;
+    color: #333;
+    background-color: #f0f0f0;
+    font-weight: 600;
+}
+
+/* 滑鼠懸停：變換為品牌銅橘色 */
+.member-tag:hover {
+    background-color: var(--accent-copper);
+    color: #ffffff !important;
+    border-color: var(--accent-copper);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(211, 84, 0, 0.15);
+}
+
+/* 響應式微調 */
+@media (max-width: 768px) {
+    .former-tags-container {
+        justify-content: center; /* 手機版置中 */
+    }
+    .member-tag {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+    }
+}
+/* ==========================================================================
+   P3: PUBLICATIONS 樣式優化
+   ========================================================================== */
+
+/* 重點推薦網格 */
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 80px;
+}
+
+.highlight-item {
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    transform: translateY(-5px);
+}
+
+.pub-badge {
+    font-family: 'Montserrat';
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--accent-copper);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-copper);
+    display: inline-block;
+}
+
+.pub-citation {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+/* 學術服務區塊 */
+.service-bg {
+    background: #f9f8f6;
+    padding: 60px 40px;
+    margin: 0 -40px 80px -40px;
+}
+
+.service-flex {
+    display: flex;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.service-box { flex: 1; }
+.service-type {
+    font-family: 'Montserrat';
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.editorial-list {
+    list-style: none;
+    padding: 0;
+}
+
+.editorial-list li {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    border-left: 2px solid var(--accent-copper);
+}
+
+.reviewer-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.reviewer-cloud span {
+    background: #fff;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    color: #777;
+    border: 1px solid #eee;
+}
+
+/* 文獻清單樣式 */
+.bib-list {
+    list-style: none;
+    padding: 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bib-entry {
+    display: flex;
+    gap: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    align-items: flex-start;
+}
+
+.bib-year {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    color: #bbb;
+    min-width: 50px;
+}
+
+.bib-content {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* 展開動畫 */
+.bib-drawer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.bib-drawer.active {
+    max-height: 2000px; /* 設一個足夠大的高度 */
+}
+
+.expand-btn {
+    display: block;
+    margin: 40px auto;
+    background: none;
+    border: 1px solid #ddd;
+    padding: 12px 30px;
+    font-family: 'Montserrat';
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.expand-btn:hover {
+    background: var(--text-dark);
+    color: #fff;
+}
+
+/* 數據卡片 */
+.metrics-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.metric-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 20px 40px;
+    text-align: center;
+}
+
+.metric-label { font-family: 'Montserrat'; display: block; font-size: 0.7rem; color: #999; }
+.metric-val { font-size: 1.1rem; font-weight: 600; margin: 10px 0; display: block; }
+.metric-link { font-size: 0.75rem; text-decoration: none; color: var(--accent-copper); font-weight: 700; }
+
+/* 響應式載具 */
+@media (max-width: 768px) {
+    .service-flex { flex-direction: column; }
+    .bib-entry { flex-direction: column; gap: 5px; }
+    .bib-year { font-size: 1.2rem; }
+    .metrics-container { flex-direction: column; }
+    .service-bg { padding: 40px 20px; margin: 0 -20px 60px -20px; }
+}
+
+/* ==========================================================================
+   P4: OUTREACH 優化版 (圖片縮小 + 影片輪播)
+   ========================================================================== */
+.gallery-bg { background-color: var(--bg-gallery); }
+
+/* 展覽圖片縮小 30% */
+.museum-grid-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.grid-card-mini {
+    width: 70%; /* 圖片縮小 30% */
+    background: #fff;
+    border: 1px solid #eee;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.grid-card-mini:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+.grid-card-mini .card-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* 影片輪播區塊樣式 */
+.video-carousel-section {
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-track-container {
+    width: 90%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-out;
+    padding: 20px 0;
+}
+
+.video-card {
+    min-width: calc(50% - 10px); /* 每次顯示兩部影片 */
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.carousel-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover { background: var(--accent-copper); }
+
+.video-container {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 */
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.video-info { padding: 20px; }
+.video-info h5 { margin: 0; font-size: 1.1rem; }
+.video-info p { margin: 5px 0 0; color: #777; font-size: 0.9rem; }
+
+/* 講座足跡保持原樣但微調間距 */
+.talks-footprint-premium {
+    background: #111;
+    color: white;
+    padding: 80px 60px;
+    margin-top: 60px;
+}
+
+.footprint-container {
+    display: flex;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-num { font-size: 3.5rem; color: var(--accent-copper); font-weight: 800; }
+
+@media (max-width: 768px) {
+    .grid-card-mini { width: 100%; }
+    .video-card { min-width: 100%; } /* 手機版一次一部 */
+}
+/* ==========================================================================
+   P5: CONNECT 內容排版優化
+   ========================================================================== */
+.contact-page-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px);
+    padding: 60px 20px;
+}
+
+.contact-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 550px;
+    padding: 60px;
+    position: relative;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+}
+
+.contact-card::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent-copper);
+    z-index: -1;
+}
+
+.card-header { margin-bottom: 40px; text-align: left; }
+.contact-name { font-size: 2.2rem; margin: 10px 0; color: var(--text-dark); }
+.contact-name small { font-size: 1.1rem; color: #888; font-weight: 400; display: block; }
+.contact-title { font-size: 0.95rem; color: #666; margin: 0; }
+
+.card-body { display: flex; flex-direction: column; gap: 30px; }
+.contact-item { display: flex; align-items: flex-start; gap: 20px; }
+.icon-box { 
+    width: 45px; height: 45px; 
+    background: #fdfaf7; color: var(--accent-copper);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; font-size: 1.1rem;
+}
+
+.contact-info .label { display: block; font-size: 0.7rem; font-family: 'Montserrat'; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
+.contact-info .link, .contact-info .text { font-size: 1rem; color: var(--text-dark); text-decoration: none; margin: 5px 0 0; }
+.map-link { font-size: 0.85rem; color: var(--accent-copper); text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block; }
+
+.card-footer-deco { margin-top: 50px; padding-top: 30px; border-top: 1px solid #f0f0f0; text-align: center; }
+.card-footer-deco p { font-family: 'Montserrat'; font-size: 0.75rem; color: #bbb; letter-spacing: 1px; }
+
+/* 針對小視窗與手機的最終微調 */
+@media (max-width: 600px) {
+    .contact-card { padding: 40px 25px; }
+    .contact-name { font-size: 1.8rem; }
+    .contact-item { gap: 15px; }
+}
