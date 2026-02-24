@@ -382,42 +382,57 @@
     box-shadow: 0 12px 25px rgba(0,0,0,0.1);
 }
 
-/* --- 修改：增加可點擊成員卡片的質感 --- */
+/* --- 修改處：優化點擊提示與視覺導引 --- */
 .member-card {
     background: #f9f9f9;
     padding: 18px;
     border-left: 4px solid #ddd;
     font-size: 0.95rem;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #666; /* 預設較淡 */
 }
 
+/* 針對有資料可點擊的成員 */
 .member-card.clickable {
     cursor: pointer;
-    border-left-color: #bbb;
+    border-left: 4px solid #bbb;
+    color: var(--text-dark); /* 有資料的人名字較深 */
 }
 
 .member-card.clickable:hover {
     border-left-color: var(--accent-copper);
     background: #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(211, 84, 0, 0.1);
+    transform: translateX(5px);
 }
 
-.member-card i {
-    color: #ccc;
-    font-size: 0.8rem;
+/* 橘色資訊圖示標記 */
+.info-icon {
+    color: var(--accent-copper); /* 亮橘色提醒可點擊 */
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: 0.3s;
 }
 
-.member-card.clickable:hover i {
-    color: var(--accent-copper);
+.member-card.clickable:hover .info-icon {
+    opacity: 1;
+    transform: scale(1.2);
 }
 
-/* 針對 Former Members 的點擊樣式 */
+/* 校友標籤的點擊標示 */
 .clickable-tag {
-    cursor: pointer;
+    cursor: pointer !important;
     border: 1px solid var(--accent-copper) !important;
+    background-color: #fffaf5 !important;
+}
+
+.clickable-tag i {
+    margin-left: 5px;
+    font-size: 0.7rem;
+    color: var(--accent-copper);
 }
 
 /* 彈窗樣式 (Modal) */
