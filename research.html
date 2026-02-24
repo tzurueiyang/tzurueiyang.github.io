@@ -29,8 +29,8 @@
         <div class="map-wrapper">
             <div class="map-canvas">
                 <img src="./assets/world-map-bg.png" alt="World Map" class="map-bg">
-                <div class="map-pin pulse" style="top: 31%; left: 18.5%;" data-title="美國蒙大拿" data-desc="研究晚白堊紀地層挖掘。"></div>
-                <div class="map-pin pulse" style="top: 31%; left: 49.5%;" data-title="德國波昂" data-desc="恐龍生殖生理學研究基地。"></div>
+                <div class="map-pin pulse" style="top: 31%; left: 18.5%;" data-title="美國蒙大拿" data-desc="研究晚白堊紀地層挖掘，探索恐龍多樣性。"></div>
+                <div class="map-pin pulse" style="top: 31%; left: 49.5%;" data-title="德國波昂" data-desc="波昂大學恐龍生殖生理學研究基地。"></div>
                 <div class="map-pin pulse" style="top: 48%; left: 81%;" data-title="台灣恆春" data-desc="挖掘距今 8 萬年的大型鯨魚化石。"></div>
             </div>
             <div id="map-info" class="map-info-box">點擊圓點查看探索細節</div>
@@ -102,21 +102,21 @@
 
 <script>
     const studentData = {
-        'Hsiao-Jou Wu': { name: '吳筱柔 Hsiao-Jou Wu', img: '吳筱柔.png', edu: 'Master of Science, National Cheng Kung University (2020)<br>Bachelor of Science, National Cheng Kung University (2018)', info: 'Member of Tougou whale fossil excavation team. 曾參與恆春頭溝鯨魚化石挖掘團隊。' },
+        'Hsiao-Jou Wu': { name: '吳筱柔 Hsiao-Jou Wu', img: '吳筱柔.png', edu: 'Master of Science, National Cheng Kung University (2020)', info: 'Member of Tougou whale fossil excavation team. 曾參與恆春頭溝鯨魚化石挖掘團隊。' },
         'Yun-Ru Chen': { name: '陳韻如 Yun-Ru Chen', img: '陳韻如.png', edu: 'Master of Science, National Chung Hsing University (2023)', info: 'Research Assistant at Vertebrate Paleobiology Lab, NMNS.' },
         'Zong-Dai Chen': { name: '陳宗岱 Zong-Dai Chen', img: '陳宗岱.png', edu: 'Master student, NCHU', info: 'Researching vertebrate evolution.' },
-        'Chi-Hong Chiu': { name: '邱琪鴻 Chi-Hong Chiu', img: '隨機5.png', edu: 'Master student, NCHU', info: 'Specialist in fossil preparation.' },
+        'Chi-Hong Chiu': { name: '邱琪鴻 Chi-Hong Chiu', img: '隨機5.png', edu: 'Master student, NCHU', info: 'Fossil preparation and collection management.' },
         'Dai-An Lee': { name: '李岱安 Dai-An Lee', img: '李岱安.png', edu: 'Master student, NCHU', info: 'Focus on stratigraphy and environment.' },
-        'Chen Chin': { name: '陳婧 Chen Chin', img: '隨機5.png', edu: 'National Taiwan Normal University, Geosciences', info: 'Research intern and graduate student.' },
-        'Tzu-Chin Chi': { name: '紀子勤 Dr. Tzu-Chin Chi', img: '隨機5.png', edu: 'PhD, National Taiwan University', info: 'Expert in Taiwan geology.' },
-        'Kuan-Yu Chou': { name: '周冠宇 Kuan-Yu Chou', img: '隨機5.png', edu: 'Bachelor of Science, Department of Earth Sciences, NCKU', info: 'Geological field research.' },
-        'Shu-Ying Chunag': { name: '莊淑瑛 Shu-Ying Chunag', img: '隨機5.png', edu: 'Bachelor of Science, Department of Life Sciences, NCKU', info: 'Focus on Biology and Paleontology.' },
-        'Chun-Chi Liao': { name: '廖俊棋 Dr. Chun-Chi Liao', img: '隨機5.png', edu: 'PhD, Chinese Academy of Sciences (IVPP)', info: 'Specialist in Mesozoic reptiles.' },
-        'Jerry Leung': { name: '梁子儀 Jerry Leung', img: '隨機5.png', edu: 'Bachelor of Science, National Cheng Kung University', info: 'Vertebrate research assistant.' },
-        'Chun-Yu Su': { name: '蘇雋佑 Chun-Yu Su', img: '隨機5.png', edu: 'Bachelor of Science, National Cheng Kung University', info: 'Fossil record management.' },
-        'Yu-Tsung Tai': { name: '戴育聰 Yu-Tsung Tai', img: '隨機5.png', edu: 'Bachelor of Science, National Cheng Kung University', info: 'Geological mapping and analysis.' },
+        'Chen Chin': { name: '陳婧 Chen Chin', img: '陳婧.png', edu: 'National Taiwan Normal University, Geosciences', info: 'Research intern and graduate student.' },
+        'Tzu-Chin Chi': { name: '紀子勤 Dr. Tzu-Chin Chi', img: '紀子勤.png', edu: 'PhD, National Taiwan University', info: 'Expert in Taiwan geology.' },
+        'Kuan-Yu Chou': { name: '周冠宇 Kuan-Yu Chou', img: '周冠宇.png', edu: 'Bachelor of Science, Department of Earth Sciences, NCKU', info: 'Geological field research.' },
+        'Shu-Ying Chunag': { name: '莊淑瑛 Shu-Ying Chunag', img: '莊淑瑛.png', edu: 'Bachelor of Science, Department of Life Sciences, NCKU', info: 'Biology and Vertebrate Paleobiology research.' },
+        'Chun-Chi Liao': { name: '廖俊棋 Dr. Chun-Chi Liao', img: '廖俊棋.png', edu: 'PhD, Chinese Academy of Sciences (IVPP)', info: 'Specialist in Mesozoic reptiles.' },
+        'Jerry Leung': { name: '梁子儀 Jerry Leung', img: '梁子儀.png', edu: 'Bachelor of Science, National Cheng Kung University', info: 'Vertebrate research assistant.' },
+        'Chun-Yu Su': { name: '蘇雋佑 Chun-Yu Su', img: '蘇雋佑.png', edu: 'Bachelor of Science, National Cheng Kung University', info: 'Member of vertebrate research team.' },
+        'Yu-Tsung Tai': { name: '戴育聰 Yu-Tsung Tai', img: '戴育聰.png', edu: 'Bachelor of Science, National Cheng Kung University', info: 'Geological mapping and analysis.' },
         'Raphael Weiss': { name: 'Raphael Weiss', img: '隨機5.png', edu: 'Master of Science, University of Bonn (2021)', info: 'Thesis: Reproductive biology of Oviratptorosauria.' },
-        'Yu-Jie Wu': { name: '吳昱杰 Yu-Jie Wu', img: '吳昱杰.png', edu: 'MS, NCKU (2017)<br>BS, NCKU (2015)', info: 'Research Assistant. Expertise in Machine Learning applications.' }
+        'Yu-Jie Wu': { name: '吳昱杰 Yu-Jie Wu', img: '吳昱杰.png', edu: 'MS, NCKU (2017)', info: 'Research Assistant. Expertise in Machine Learning applications.' }
     };
 
     function openModal(id) {
